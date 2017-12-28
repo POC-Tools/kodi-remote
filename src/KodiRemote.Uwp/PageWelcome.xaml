@@ -15,9 +15,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <toolkit:TileControl Grid.RowSpan="2"
+        <!--<toolkit:TileControl Grid.RowSpan="2"
                              IsAnimated="False"
-                             ImageSource="ms-appx:///Assets/welcome.small.png" />
+                             ImageSource="ms-appx:///Assets/welcome.small.png" />-->
 
         <Grid VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
