@@ -10,8 +10,7 @@
 
     <Page.Resources>
 
-        <DataTemplate x:Key="NavMenuItemTemplate"
-                      x:DataType="core:NavMenuItem">
+        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="core:NavMenuItem">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -46,8 +45,7 @@
 
     </Page.Resources>
 
-    <Grid Margin="0,-5,0,0"
-          x:Name="LayoutRoot">
+    <Grid Margin="0,-5,0,0" x:Name="LayoutRoot">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -56,10 +54,8 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource LargeWindowSnapPoint}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitView.DisplayMode"
-                                Value="CompactInline" />
-                        <Setter Target="RootSplitView.IsPaneOpen"
-                                Value="True" />
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline" />
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -67,10 +63,8 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowSnapPoint}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitView.DisplayMode"
-                                Value="CompactOverlay" />
-                        <Setter Target="RootSplitView.IsPaneOpen"
-                                Value="False" />
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -78,10 +72,8 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource MinWindowSnapPoint}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitView.DisplayMode"
-                                Value="Overlay" />
-                        <Setter Target="RootSplitView.IsPaneOpen"
-                                Value="False" />
+                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay" />
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

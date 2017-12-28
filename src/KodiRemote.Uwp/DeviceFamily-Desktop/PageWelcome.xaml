@@ -14,10 +14,11 @@
             <RowDefinition Height=".7*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        <toolkit:TileControl Grid.RowSpan="2"
+
+        <!--TileControl issue: https://github.com/Microsoft/UWPCommunityToolkit/issues/1070-->
+        <!--<toolkit:TileControl Grid.RowSpan="2"
                              IsAnimated="False"
-                             ImageSource="ms-appx:///Assets/welcome.large.png" />
+                             ImageSource="ms-appx:///Assets/welcome.large.png" />-->
 
         <Grid VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
@@ -88,7 +89,7 @@
 
             <TextBlock x:Uid="/welcome/AppTittle"
                        Text="Media Center Remote"
-                       Style="{StaticResource TextExtraLargeStyle}"
+                       Style="{StaticResource TextLargeStyle}"
                        HorizontalAlignment="Center" />
 
             <TextBlock x:Uid="/welcome/WelcomeMessage"
@@ -96,8 +97,7 @@
                        Grid.Row="2"
                        Text="Before using the application, you must select the Kodi server you want to connect to."
                        TextWrapping="Wrap"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource TextLargeStyle}"
+                       HorizontalAlignment="Center"                      
                        Foreground="#8F9595"
                        TextAlignment="Center" />
 
