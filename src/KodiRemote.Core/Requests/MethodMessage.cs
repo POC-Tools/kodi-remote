@@ -17,8 +17,7 @@ namespace KodiRemote.Core.Requests
     }
 
     [JsonObject]
-    public class ParameteredMethodMessage<T> : MethodMessage
-        where T : Parameters
+    public class ParameteredMethodMessage<T> : MethodMessage where T : Parameters
     {
         [JsonProperty(PropertyName = "params")]
         public T Parameters { get; set; }

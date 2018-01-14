@@ -4,14 +4,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      mc:Ignorable="d"
-      FontFamily="{StaticResource PhoneFontFamilyNormal}"
-      FontSize="{StaticResource PhoneFontSizeNormal}"
-      Foreground="{StaticResource PhoneForegroundBrush}">
+      mc:Ignorable="d">
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height=".7*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -23,84 +20,40 @@
         <Grid VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="1"
-                    Background="#383A3B">
+            <Border Grid.Column="1" Grid.ColumnSpan="2" Height="120"
+                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                    CornerRadius="60,0,0,60">
+            </Border>
+            <Image Grid.Column="1" Source="Assets/WelcomeLogo.png" Margin="10"/>
+
+            <Viewbox Stretch="Uniform" Grid.Column="2" Height="150">
                 <TextBlock x:Uid="/welcome/GetStarted"
                            Text="Get Started"
-                           VerticalAlignment="Center"
-                           Margin="75,0,0,0"
-                           FontFamily="{StaticResource PhoneFontFamilyLight}"
-                           FontSize="26" />
-            </Border>
+                           FontStretch="Normal"
+                           Margin="0,10,10,10"
+                           FontSize="14" 
+                           Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+            </Viewbox>
 
-            <Border Grid.ColumnSpan="2"
-                    Background="#383A3B"
-                    CornerRadius="75"
-                    Height="150"
-                    Width="150">
-                <Border Background="#1B1C1F"
-                        CornerRadius="90"
-                        Height="115"
-                        Width="115">
-                    <Grid>
-                        <Grid Margin="3">
-                            <Image Source="Assets/Remote/arrow-left.png"
-                                   Width="20"
-                                   HorizontalAlignment="Left" />
-                            <Image Source="Assets/Remote/arrow-up.png"
-                                   Width="20"
-                                   VerticalAlignment="Top" />
-                            <Image Source="Assets/Remote/arrow-right.png"
-                                   Width="20"
-                                   HorizontalAlignment="Right" />
-                            <Image Source="Assets/Remote/arrow-down.png"
-                                   Width="20"
-                                   VerticalAlignment="Bottom" />
-                        </Grid>
-
-                        <Border Background="#383A3B"
-                                CornerRadius="40"
-                                Height="55"
-                                Width="55">
-                            <TextBlock Text="OK"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Padding="0,0,0,3"
-                                       FontFamily="Segoe UI"
-                                       FontSize="26" />
-                        </Border>
-                    </Grid>
-                </Border>
-            </Border>
 
         </Grid>
 
-        <Grid Grid.Row="1"
-              Margin="15,50">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <TextBlock x:Uid="/welcome/AppTittle"
-                       Text="Media Center Remote"
-                       Style="{StaticResource PhoneTextLargeStyle}"
-                       HorizontalAlignment="Center" />
-
+        <StackPanel Grid.Row="1">
+            <Viewbox Stretch="Uniform" MaxHeight="100" Margin="40,0,40,0">
+                <TextBlock x:Uid="/welcome/AppTittle" Text="Media Center Remote" HorizontalAlignment="Center" FontStretch="Normal" FontSize="14"/>
+            </Viewbox>
             <TextBlock x:Uid="/welcome/WelcomeMessage"
                        x:Name="WelcomeText"
                        Grid.Row="2"
                        Text="Welcome Message"
                        TextWrapping="Wrap"
-                       HorizontalAlignment="Center"
-                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
-                       Foreground="#8F9595"
-                       TextAlignment="Center" />
+                       HorizontalAlignment="Center"  Margin="40,0,40,0"
+                       Foreground= "{ThemeResource ApplicationSecondaryForegroundThemeBrush}" 
+                       TextAlignment="Center" />  <!--"#8F9595"-->
 
             <Button x:Uid="/welcome/AddButton"
                     x:Name="AddButton"
@@ -108,9 +61,10 @@
                     Grid.Row="3"
                     Content="Add Kodi Server"
                     HorizontalAlignment="Center"
-                    Margin="0,10,0,0"
-                    Style="{StaticResource TextButtonStyle}" />
+                    Foreground="{ThemeResource ButtonForegroundThemeBrush}"
+                    Background="{ThemeResource ButtonBackgroundThemeBrush}"
+                    Margin="0,10,0,0" />
 
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

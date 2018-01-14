@@ -100,14 +100,11 @@
 
             <SplitView.Pane>
                 <!-- A custom ListView to display the items in the pane.  The automation Name is set in the ContainerContentChanging event. -->
-                <controls:NavMenuListView x:Name="NavMenuList"
-                                          TabIndex="3"
-                                          Margin="0,52,0,0"
+                <controls:NavMenuListView x:Name="NavMenuList" TabIndex="3" Margin="0,52,0,0"
                                           ContainerContentChanging="NavMenuItemContainerContentChanging"
                                           ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}"
                                           ItemTemplate="{StaticResource NavMenuItemTemplate}"
                                           ItemInvoked="NavMenuList_ItemInvoked" />
-
             </SplitView.Pane>
 
             <SplitView.Content>

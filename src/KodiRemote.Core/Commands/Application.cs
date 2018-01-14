@@ -24,10 +24,10 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(ApplicationPropertyName));
 
             var method = new ParameteredMethodMessage<PropertiesParameters>
-                             {
-                                 Method = "Application.GetProperties",
-                                 Parameters = new PropertiesParameters { Properties = properties }
-                             };
+            {
+                Method = "Application.GetProperties",
+                Parameters = new PropertiesParameters { Properties = properties }
+            };
 
             var item = await _request.SendRequestAsync<BasicResponseMessage<ApplicationPropertiesResponseMessage>>(method);
             return item.Result;
@@ -43,10 +43,10 @@ namespace KodiRemote.Core.Commands
         public async Task<bool> SetMuteAsync(bool mute)
         {
             var method = new ParameteredMethodMessage<MuteParameters>
-                             {
-                                 Method = "Application.SetMute",
-                                 Parameters = new MuteParameters { Mute = mute }
-                             };
+            {
+                Method = "Application.SetMute",
+                Parameters = new MuteParameters { Mute = mute }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<bool>>(method);
             return result.Result;
@@ -58,10 +58,10 @@ namespace KodiRemote.Core.Commands
         public async Task<int> SetVolumeAsync(int volume)
         {
             var method = new ParameteredMethodMessage<VolumeParameters>
-                             {
-                                 Method = "Application.SetVolume",
-                                 Parameters = new VolumeValueParameters { Volume = volume }
-                             };
+            {
+                Method = "Application.SetVolume",
+                Parameters = new VolumeValueParameters { Volume = volume }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<int>>(method);
             return result.Result;
@@ -85,10 +85,10 @@ namespace KodiRemote.Core.Commands
         private async Task<int> SetVolumeAsync(string where)
         {
             var method = new ParameteredMethodMessage<VolumeDirectionParameters>
-                             {
-                                 Method = "Application.SetVolume",
-                                 Parameters = new VolumeDirectionParameters { Volume = where }
-                             };
+            {
+                Method = "Application.SetVolume",
+                Parameters = new VolumeDirectionParameters { Volume = where }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<int>>(method);
             return result.Result;

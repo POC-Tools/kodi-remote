@@ -22,15 +22,14 @@ namespace KodiRemote.Core.Requests
             where T : ResponseMessageBase
         {
             var methodMessage = new MethodMessage
-                                    {
-                                        Method = methodName
-                                    };
+            {
+                Method = methodName
+            };
 
             return await SendRequestAsync<T>(methodMessage, timeoutSeconds);
         }
 
-        internal async Task<T> SendRequestAsync<T>(MethodMessage methodMessage, int timeoutSeconds = 30)
-            where T : ResponseMessageBase
+        internal async Task<T> SendRequestAsync<T>(MethodMessage methodMessage, int timeoutSeconds = 30) where T : ResponseMessageBase
         {
             int id = RandomNumber.GetRandomNumber(1, int.MaxValue);
             methodMessage.Id = id;
@@ -45,14 +44,14 @@ namespace KodiRemote.Core.Requests
                     handler.Credentials = new NetworkCredential(_xbmc.Login, _xbmc.Password);
 
                 var httpClient = new HttpClient(handler)
-                                 {
-                                     Timeout = TimeSpan.FromSeconds(timeoutSeconds)
-                                 };
+                {
+                    Timeout = TimeSpan.FromSeconds(timeoutSeconds)
+                };
 
                 var request = new HttpRequestMessage(HttpMethod.Post, _xbmc.BaseUrl)
-                              {
-                                  Content = new StringContent(serialization, Encoding.UTF8, "application/json")
-                              };
+                {
+                    Content = new StringContent(serialization, Encoding.UTF8, "application/json")
+                };
 
                 try
                 {
@@ -65,7 +64,7 @@ namespace KodiRemote.Core.Requests
                     throw new TimeoutException(methodMessage.Method);
                 }
             }
-            
+
             var result = JsonConvert.DeserializeObject<T>(resultStr);
 
             if (result.Id != methodMessage.Id)

@@ -53,7 +53,7 @@ namespace KodiRemote.Core.Requests
     {
         [JsonProperty(PropertyName = "item")]
         public T Item { get; set; }
-        
+
         [JsonProperty(PropertyName = "options")]
         public OpenOptions Options { get; set; }
     }

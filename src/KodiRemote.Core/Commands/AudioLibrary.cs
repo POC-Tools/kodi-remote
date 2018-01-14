@@ -32,14 +32,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(AudioFieldsAlbum));
 
             var method = new ParameteredMethodMessage<AlbumFieldsParameters>
-                             {
-                                 Method = "AudioLibrary.GetAlbumDetails",
-                                 Parameters = new AlbumFieldsParameters
-                                                  {
-                                                      AlbumId = albumId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "AudioLibrary.GetAlbumDetails",
+                Parameters = new AlbumFieldsParameters
+                {
+                    AlbumId = albumId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<AlbumDetails>>(method);
             return result.Result.Details;
@@ -68,14 +68,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(AudioFieldsArtist));
 
             var method = new ParameteredMethodMessage<ArtistFieldsParameters>
+            {
+                Method = "AudioLibrary.GetArtistDetails",
+                Parameters = new ArtistFieldsParameters
                 {
-                    Method = "AudioLibrary.GetArtistDetails",
-                    Parameters = new ArtistFieldsParameters
-                        {
-                            ArtistId = artistId,
-                            Properties = items
-                        }
-                };
+                    ArtistId = artistId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<ArtistDetails>>(method);
             return result.Result.Details;
@@ -95,21 +95,21 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(AudioFieldsArtist));
 
             var method = new ParameteredMethodMessage<ArtistsParameters>
+            {
+                Method = "AudioLibrary.GetArtists",
+                Parameters = new ArtistsParameters
                 {
-                    Method = "AudioLibrary.GetArtists",
-                    Parameters = new ArtistsParameters
-                        {
-                            AlbumArtistsOnly = albumArtistsOnly,
-                            Properties = properties,
-                            Limits = new ListLimits { Start = start, End = end },
-                            Sort = new ListSort
-                                {
-                                    IgnoreArticle = ignorearticle,
-                                    Order = sortOrder.ToString().ToLowerInvariant(),
-                                    Method = sortMethod.ToString().ToLowerInvariant()
-                                }
-                        }
-                };
+                    AlbumArtistsOnly = albumArtistsOnly,
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<ArtistsResponse>>(method);
             return result.Result;
@@ -128,20 +128,20 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(LibraryFieldsGenre));
 
             var method = new ParameteredMethodMessage<LimitsSortPropertiesParameters>
-                             {
-                                 Method = "AudioLibrary.GetGenres",
-                                 Parameters = new LimitsSortPropertiesParameters
-                                                  {
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = "AudioLibrary.GetGenres",
+                Parameters = new LimitsSortPropertiesParameters
+                {
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<GenresResponse>>(method);
             return result.Result;
@@ -216,10 +216,10 @@ namespace KodiRemote.Core.Commands
         public async Task<string> ScanAsync(string directory = "")
         {
             var method = new ParameteredMethodMessage<ScanParameters>
-                             {
-                                 Method = "AudioLibrary.Scan",
-                                 Parameters = new ScanParameters { Directory = directory }
-                             };
+            {
+                Method = "AudioLibrary.Scan",
+                Parameters = new ScanParameters { Directory = directory }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<string>>(method);
             return result.Result;
@@ -252,21 +252,21 @@ namespace KodiRemote.Core.Commands
                 filter = new Filter { GenreId = genreId };
 
             var method = new ParameteredMethodMessage<FilteredPropertiesParameters>
-                             {
-                                 Method = methodName,
-                                 Parameters = new FilteredPropertiesParameters
-                                                  {
-                                                      Filter = filter,
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = methodName,
+                Parameters = new FilteredPropertiesParameters
+                {
+                    Filter = filter,
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<T>>(method);
             return result.Result;
@@ -285,20 +285,20 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(E));
 
             var method = new ParameteredMethodMessage<LimitsSortPropertiesParameters>
-                             {
-                                 Method = methodName,
-                                 Parameters = new LimitsSortPropertiesParameters
-                                                  {
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = methodName,
+                Parameters = new LimitsSortPropertiesParameters
+                {
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<T>>(method);
             return result.Result;

@@ -1,45 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
+    <!--<FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
     <FontFamily x:Key="PhoneFontFamilyLight">Segoe WP Light</FontFamily>
     <FontFamily x:Key="PhoneFontFamilySemiLight">Segoe WP SemiLight</FontFamily>
     <FontFamily x:Key="PhoneFontFamilySemiBold">Segoe WP Semibold</FontFamily>
     <FontFamily x:Key="PhoneFontFamilyBold">Segoe WP Bold</FontFamily>
 
-    <!--14pt-->
+    --><!--14pt--><!--
     <x:Double x:Key="PhoneFontSizeSmall">18.667</x:Double>
-    <!--15pt-->
+    --><!--15pt--><!--
     <x:Double x:Key="PhoneFontSizeNormal">20</x:Double>
-    <!--17pt-->
+    --><!--17pt--><!--
     <x:Double x:Key="PhoneFontSizeMedium">22.667</x:Double>
-    <!--19pt-->
+    --><!--19pt--><!--
     <x:Double x:Key="PhoneFontSizeMediumLarge">25.333</x:Double>
-    <!--24pt-->
+    --><!--24pt--><!--
     <x:Double x:Key="PhoneFontSizeLarge">32</x:Double>
-    <!--32pt-->
+    --><!--32pt--><!--
     <x:Double x:Key="PhoneFontSizeExtraLarge">42.667</x:Double>
-    <!--54pt-->
+    --><!--54pt--><!--
     <x:Double x:Key="PhoneFontSizeExtraExtraLarge">72</x:Double>
-    <!--140pt-->
+    --><!--140pt--><!--
     <x:Double x:Key="PhoneFontSizeHuge">186.667</x:Double>
 
-    <!-- Default border size-->
+    --><!-- Default border size--><!--
     <Thickness x:Key="PhoneBorderThickness">3</Thickness>
 
-    <!-- Touch Target area -->
+    --><!-- Touch Target area --><!--
     <Thickness x:Key="PhoneTouchTargetOverhang">12</Thickness>
 
-    <!-- Inner margins for text controls -->
+    --><!-- Inner margins for text controls --><!--
     <Thickness x:Key="PhoneTextBoxInnerMargin">1,2</Thickness>
 
 
 
 
-    <!-- 47 percent percent Black -->
+    --><!-- 47 percent percent Black --><!--
     <Color x:Key="PhoneTextBoxReadOnlyColor">#77000000</Color>
     
-    <!-- 75 percent White -->
+    --><!-- 75 percent White --><!--
     <Color x:Key="PhoneTextBoxColor">#BFFFFFFF</Color>
     
     <SolidColorBrush x:Key="PhoneTextBoxBrush"
@@ -206,7 +206,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
 
 </ResourceDictionary>

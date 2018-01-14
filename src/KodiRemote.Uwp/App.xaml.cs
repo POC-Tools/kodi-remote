@@ -9,6 +9,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,7 +27,6 @@ namespace KodiRemote.Uwp
     {
         private static Context _context;
         public static Context Context { get { return _context ?? (_context = new Context()); } }
-
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -36,6 +36,8 @@ namespace KodiRemote.Uwp
             InitializeComponent();
             Suspending += OnSuspending;
         }
+
+     
 
         public static void TrackException(Exception e)
         {
@@ -51,7 +53,8 @@ namespace KodiRemote.Uwp
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-
+           
+            var theme = Application.Current.RequestedTheme;
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)

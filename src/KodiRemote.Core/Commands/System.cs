@@ -31,10 +31,10 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(PropertyNames));
 
             var method = new ParameteredMethodMessage<ItemsParameters>
-                             {
-                                 Method = "System.GetProperties",
-                                 Parameters = new ItemsParameters { Items = items }
-                             };
+            {
+                Method = "System.GetProperties",
+                Parameters = new ItemsParameters { Items = items }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<SystemPropertyValue>>(method);
             return result.Result;

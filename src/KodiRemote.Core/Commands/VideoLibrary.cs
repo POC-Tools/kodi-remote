@@ -32,14 +32,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(VideoFieldsEpisode));
 
             var method = new ParameteredMethodMessage<GetEpidodeParameters>
-                             {
-                                 Method = "VideoLibrary.GetEpisodeDetails",
-                                 Parameters = new GetEpidodeParameters
-                                                  {
-                                                      EpisodeId = episodeId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetEpisodeDetails",
+                Parameters = new GetEpidodeParameters
+                {
+                    EpisodeId = episodeId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<VideoDetailsEpisodeResponse>>(method);
             return result.Result;
@@ -59,22 +59,22 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(VideoFieldsEpisode));
 
             var method = new ParameteredMethodMessage<GetEpidodesParameters>
-                             {
-                                 Method = "VideoLibrary.GetEpisodes",
-                                 Parameters = new GetEpidodesParameters
-                                                  {
-                                                      TvShowId = tvShowId,
-                                                      Season = season,
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetEpisodes",
+                Parameters = new GetEpidodesParameters
+                {
+                    TvShowId = tvShowId,
+                    Season = season,
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<EpisodesResponse>>(method);
             return result.Result;
@@ -94,21 +94,21 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(LibraryFieldsGenre));
 
             var method = new ParameteredMethodMessage<VideoGenreParameters>
-                             {
-                                 Method = "VideoLibrary.GetGenres",
-                                 Parameters = new VideoGenreParameters
-                                                  {
-                                                      Type = videoType.ToString().ToLowerInvariant(),
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetGenres",
+                Parameters = new VideoGenreParameters
+                {
+                    Type = videoType.ToString().ToLowerInvariant(),
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<GenresResponse>>(method);
             return result.Result;
@@ -123,14 +123,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(VideoFieldsMovie));
 
             var method = new ParameteredMethodMessage<GetMovieParameters>
-                             {
-                                 Method = "VideoLibrary.GetMovieDetails",
-                                 Parameters = new GetMovieParameters
-                                                  {
-                                                      MovieId = movieId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetMovieDetails",
+                Parameters = new GetMovieParameters
+                {
+                    MovieId = movieId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<VideoDetailsMovieDetails>>(method);
             return result.Result.DetailsMovie;
@@ -145,14 +145,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(VideoFieldsMovieSet));
 
             var method = new ParameteredMethodMessage<GetMovieSetParameters>
-                             {
-                                 Method = "VideoLibrary.GetMovieSetDetails",
-                                 Parameters = new GetMovieSetParameters
-                                                  {
-                                                      SetId = setId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetMovieSetDetails",
+                Parameters = new GetMovieSetParameters
+                {
+                    SetId = setId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<VideoDetailsMovieSetExtended>>(method);
             return result.Result;
@@ -197,14 +197,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(VideoFieldsMusicVideo));
 
             var method = new ParameteredMethodMessage<GetMusicVideoParameters>
-                             {
-                                 Method = "VideoLibrary.GetMusicVideoDetails",
-                                 Parameters = new GetMusicVideoParameters
-                                                  {
-                                                      MusicVideoId = musicVideoId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetMusicVideoDetails",
+                Parameters = new GetMusicVideoParameters
+                {
+                    MusicVideoId = musicVideoId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<VideoDetailsMusicVideo>>(method);
             return result.Result;
@@ -275,21 +275,21 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(VideoFieldsSeason));
 
             var method = new ParameteredMethodMessage<GetSeasonsParameters>
-                             {
-                                 Method = "VideoLibrary.GetSeasons",
-                                 Parameters = new GetSeasonsParameters
-                                                  {
-                                                      TvShowId = tvShowId,
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetSeasons",
+                Parameters = new GetSeasonsParameters
+                {
+                    TvShowId = tvShowId,
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<SeasonsResponse>>(method);
             return result.Result;
@@ -304,14 +304,14 @@ namespace KodiRemote.Core.Commands
                 items = Enum.GetNames(typeof(VideoFieldsTVShow));
 
             var method = new ParameteredMethodMessage<GetTVShowParameters>
-                             {
-                                 Method = "VideoLibrary.GetTVShowDetails",
-                                 Parameters = new GetTVShowParameters
-                                                  {
-                                                      TvShowId = tvShowId,
-                                                      Properties = items
-                                                  }
-                             };
+            {
+                Method = "VideoLibrary.GetTVShowDetails",
+                Parameters = new GetTVShowParameters
+                {
+                    TvShowId = tvShowId,
+                    Properties = items
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<VideoDetailsTvShowResponse>>(method);
             return result.Result;
@@ -333,10 +333,10 @@ namespace KodiRemote.Core.Commands
         public async Task<string> ScanAsync(string directory = "")
         {
             var method = new ParameteredMethodMessage<ScanParameters>
-                             {
-                                 Method = "VideoLibrary.Scan",
-                                 Parameters = new ScanParameters { Directory = directory }
-                             };
+            {
+                Method = "VideoLibrary.Scan",
+                Parameters = new ScanParameters { Directory = directory }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<string>>(method);
             return result.Result;
@@ -355,21 +355,21 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(TEnum));
 
             var method = new ParameteredMethodMessage<FilteredPropertiesParameters>
-                             {
-                                 Method = methodName,
-                                 Parameters = new FilteredPropertiesParameters
-                                                  {
-                                                      Filter = filter,
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = methodName,
+                Parameters = new FilteredPropertiesParameters
+                {
+                    Filter = filter,
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<T>>(method);
             return result.Result;
@@ -388,20 +388,20 @@ namespace KodiRemote.Core.Commands
                 properties = Enum.GetNames(typeof(TEnum));
 
             var method = new ParameteredMethodMessage<LimitsSortPropertiesParameters>
-                             {
-                                 Method = methodName,
-                                 Parameters = new LimitsSortPropertiesParameters
-                                                  {
-                                                      Properties = properties,
-                                                      Limits = new ListLimits { Start = start, End = end },
-                                                      Sort = new ListSort
-                                                                 {
-                                                                     IgnoreArticle = ignorearticle,
-                                                                     Order = sortOrder.ToString().ToLowerInvariant(),
-                                                                     Method = sortMethod.ToString().ToLowerInvariant()
-                                                                 }
-                                                  }
-                             };
+            {
+                Method = methodName,
+                Parameters = new LimitsSortPropertiesParameters
+                {
+                    Properties = properties,
+                    Limits = new ListLimits { Start = start, End = end },
+                    Sort = new ListSort
+                    {
+                        IgnoreArticle = ignorearticle,
+                        Order = sortOrder.ToString().ToLowerInvariant(),
+                        Method = sortMethod.ToString().ToLowerInvariant()
+                    }
+                }
+            };
 
             var result = await _request.SendRequestAsync<BasicResponseMessage<T>>(method);
             return result.Result;
