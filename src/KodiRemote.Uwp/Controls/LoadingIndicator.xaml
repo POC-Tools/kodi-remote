@@ -5,9 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             FontFamily="{StaticResource PhoneFontFamilyNormal}"
-             FontSize="{StaticResource PhoneFontSizeNormal}"
-             Foreground="{StaticResource PhoneForegroundBrush}"
              d:DesignHeight="480"
              d:DesignWidth="480"
              d:DataContext="{d:DesignInstance local:LoadingIndicator}">
@@ -70,9 +67,7 @@
                        HorizontalAlignment="Center"
                        Text="{Binding Text, FallbackValue=Loading}"
                        Margin="0,20,0,0"
-                       Foreground="#2970CF"
-                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
-                       FontSize="{StaticResource PhoneFontSizeMedium}" />
+                       Foreground="#2970CF" />
 
         </Grid>
 

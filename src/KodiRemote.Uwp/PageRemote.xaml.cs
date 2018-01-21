@@ -14,7 +14,7 @@ namespace KodiRemote.Uwp
     {
         private const int TIMER_INTERVAL = 500;
         private readonly DispatcherTimer _timer;
-        private string _cnxId;
+        private Guid _cnxId;
 
         public PageRemote()
         {
@@ -151,7 +151,7 @@ namespace KodiRemote.Uwp
 
                 int index = e.Uri.Query.IndexOf("cnx=");
                 if (index >= 0)
-                    _cnxId = e.Uri.Query.Substring(index + 4);
+                    _cnxId = new Guid( e.Uri.Query.Substring(index + 4));
             }
             else
             {

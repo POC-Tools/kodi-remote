@@ -11,28 +11,15 @@
 
     <UserControl.Resources>
 
-        <Style x:Key="CustomTextBoxStyle"
-               TargetType="TextBox">
-            <Setter Property="FontFamily"
-                    Value="{StaticResource PhoneFontFamilyNormal}" />
-            <Setter Property="FontSize"
-                    Value="{StaticResource PhoneFontSizeMediumLarge}" />
-            <Setter Property="Background"
-                    Value="Transparent" />
-            <Setter Property="Foreground"
-                    Value="White" />
-            <!--<Setter Property="CaretBrush"
-                    Value="White" />-->
-            <Setter Property="BorderBrush"
-                    Value="#8F9595" />
-            <!--<Setter Property="SelectionBackground"
-                    Value="{StaticResource PhoneAccentBrush}" />
-            <Setter Property="SelectionForeground"
-                    Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}" />-->
-            <Setter Property="BorderThickness"
-                    Value="0,0,0,1" />
-            <Setter Property="Padding"
-                    Value="0,6,0,4" />
+        <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
+          <Setter Property="Background" Value="Transparent" />
+             <!-- <Setter Property="Foreground" Value="White" />
+            <Setter Property="CaretBrush" Value="White" />
+            <Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}" />
+            <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}" />-->
+            <Setter Property="BorderBrush" Value="{ThemeResource TextBoxDisabledBorderThemeBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="0,6,0,4" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -41,55 +28,41 @@
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Disabled">
                                         <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
-                                                                           Storyboard.TargetName="MainBorder">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="Transparent" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
-                                                                           Storyboard.TargetName="MainBorder">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource PhoneDisabledBrush}" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBoxDisabledBorderThemeBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
-                                                                           Storyboard.TargetName="ContentElement">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource PhoneDisabledBrush}" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBoxDisabledForegroundThemeBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="ReadOnly">
                                         <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
-                                                                           Storyboard.TargetName="MainBorder">
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MainBorder">
                                                 <DiscreteObjectKeyFrame KeyTime="0">
                                                     <DiscreteObjectKeyFrame.Value>
                                                         <Visibility>Collapsed</Visibility>
                                                     </DiscreteObjectKeyFrame.Value>
                                                 </DiscreteObjectKeyFrame>
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
-                                                                           Storyboard.TargetName="ReadonlyBorder">
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ReadonlyBorder">
                                                 <DiscreteObjectKeyFrame KeyTime="0">
                                                     <DiscreteObjectKeyFrame.Value>
                                                         <Visibility>Visible</Visibility>
                                                     </DiscreteObjectKeyFrame.Value>
                                                 </DiscreteObjectKeyFrame>
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
-                                                                           Storyboard.TargetName="ReadonlyBorder">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource PhoneTextBoxBrush}" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBoxBackgroundThemeBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
-                                                                           Storyboard.TargetName="ReadonlyBorder">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource PhoneTextBoxBrush}" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBoxBorderThemeBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
-                                                                           Storyboard.TargetName="ContentElement">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource PhoneTextBoxReadOnlyBrush}" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBoxForegroundThemeBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -99,21 +72,21 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Background="{TemplateBinding Background}"
-                                    Margin="{StaticResource PhoneTouchTargetOverhang}" />
+                                    Margin="12" />
                             <Border x:Name="ReadonlyBorder"
-                                    BorderBrush="{StaticResource PhoneDisabledBrush}"
+                                    BorderBrush="{StaticResource TextBoxBorderThemeBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Background="Transparent"
-                                    Margin="{StaticResource PhoneTouchTargetOverhang}"
+                                    Margin="12"
                                     Visibility="Collapsed" />
                             <Border BorderBrush="Transparent"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Background="Transparent"
-                                    Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                    Margin="12">
                                 <ContentControl x:Name="ContentElement"
                                                 BorderThickness="0"
                                                 HorizontalContentAlignment="Stretch"
-                                                Margin="{StaticResource PhoneTextBoxInnerMargin}"
+                                                Margin="1,2"
                                                 Padding="{TemplateBinding Padding}"
                                                 VerticalContentAlignment="Stretch" />
                             </Border>
@@ -133,7 +106,7 @@
                        Foreground="#8F9595"
                        Padding="1,9,0,4"
                        FontSize="{StaticResource PhoneFontSizeMedium}"
-                       Margin="{StaticResource PhoneTouchTargetOverhang}" />
+                       Margin="12" />
 
             <TextBox x:Name="MainTextBox"
                      Text="{Binding Text, Mode=TwoWay}"

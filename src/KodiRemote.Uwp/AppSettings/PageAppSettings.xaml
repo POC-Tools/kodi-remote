@@ -5,8 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
     
-    <Grid Margin="0,-1,0,0"
-          Background="#EFEFF4">
+    <Grid Margin="0,-1,0,0" Background="#EFEFF4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -24,7 +23,6 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Foreground="White"
-                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
                        FontSize="28" />
         </Border>
 
@@ -57,8 +55,7 @@
 
                     <ToggleSwitch x:Name="TgDownloadFanArt"
                                   Grid.Column="1"
-                                  IsOn="True"
-                                  Style="{StaticResource SimpleToggleSwitchStyle}" />
+                                  IsOn="True"/>
                 </Grid>
             </Border>
 
@@ -80,8 +77,7 @@
 
                     <ToggleSwitch x:Name="TgDownloadThumbnails"
                                   Grid.Column="1"
-                                  IsOn="True"
-                                  Style="{StaticResource SimpleToggleSwitchStyle}" />
+                                  IsOn="True"/>
                 </Grid>
             </Border>
 
@@ -104,8 +100,7 @@
 
                     <ToggleSwitch x:Name="TgAllowVibrate"
                                   Grid.Column="1"
-                                  IsOn="True"
-                                  Style="{StaticResource SimpleToggleSwitchStyle}" />
+                                  IsOn="True" />
                 </Grid>
             </Border>
         </StackPanel>

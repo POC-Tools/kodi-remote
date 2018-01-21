@@ -128,7 +128,7 @@ namespace KodiRemote.Uwp
         }
 
         #region BackRequested Handlers
-        
+
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             bool handled = e.Handled;
@@ -231,15 +231,9 @@ namespace KodiRemote.Uwp
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusbar.BackgroundColor = new Windows.UI.Color() { R = 76, G = 155, B = 214 };
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Windows.UI.Colors.White;
-            }
+            var connID = e.Parameter == null ? Guid.Empty : (Guid)e.Parameter;
 
-            _connection = App.Context.Connections.FirstOrDefault(c => c.Id.Equals(e.Parameter?.ToString(), StringComparison.OrdinalIgnoreCase));
+            _connection = App.Context.Connections.FirstOrDefault(c => c.Id == connID);
 
             NavMenuList.SelectedIndex = 0;
             navlist[0].IsSelected = true;

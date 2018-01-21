@@ -29,18 +29,12 @@ namespace KodiRemote.Uwp
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusbar.BackgroundColor = new Windows.UI.Color() { R = 40, G = 42, B = 43 };
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Windows.UI.Colors.White;
-            }
+        
         }
 
         private void PageSendText_Loaded(object sender, RoutedEventArgs e)
         {
-            TxtTextToSend.Focus();
+            TxtTextToSend.Focus(FocusState.Keyboard);
         }
 
         public async void ButtonSendClick(object sender, RoutedEventArgs e)

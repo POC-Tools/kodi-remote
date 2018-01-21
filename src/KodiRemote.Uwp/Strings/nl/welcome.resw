@@ -117,40 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionsCaps.Text" xml:space="preserve">
-    <value>ACTIONS</value>
+  <data name="AddButton.Content" xml:space="preserve">
+    <value>Kodi server toevoegen</value>
   </data>
-  <data name="ApplicationTitle" xml:space="preserve">
+  <data name="AppTittle.Text" xml:space="preserve">
     <value>Media Center Remote</value>
   </data>
-  <data name="ApplicationTitleCaps.Text" xml:space="preserve">
-    <value>MEDIA CENTER REMOTE</value>
+  <data name="GetStarted.Text" xml:space="preserve">
+    <value>Aan de slag!</value>
   </data>
-  <data name="Cast.Text" xml:space="preserve">
-    <value>Cast</value>
-  </data>
-  <data name="DialogCancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="DialogOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="GlobalErrorMessage" xml:space="preserve">
-    <value>An error happened.</value>
-  </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Loading...</value>
-  </data>
-  <data name="NewConnection" xml:space="preserve">
-    <value>New connection</value>
-  </data>
-  <data name="SendTextButton.Content" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="SendTextTitle.Text" xml:space="preserve">
-    <value>Send text</value>
-  </data>
-  <data name="TextToSend.Text" xml:space="preserve">
-    <value>Text to send</value>
+  <data name="WelcomeMessage.Text" xml:space="preserve">
+    <value>Voordat je de applicatie kunt gebruiken, moet je eerst een Kodi server toevoegen.</value>
   </data>
 </root>

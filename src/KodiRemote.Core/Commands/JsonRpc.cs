@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using KodiRemote.Core.Model;
 using KodiRemote.Core.Requests;
 using KodiRemote.Core.Responses;
@@ -22,7 +23,7 @@ namespace KodiRemote.Core.Commands
                 var result = await _request.SendRequestAsync<BasicResponseMessage<string>>("JSONRPC.Ping", 10);
                 return result.Result.ToUpperInvariant() == "PONG";
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }

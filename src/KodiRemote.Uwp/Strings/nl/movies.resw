@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MoviesTitle.Text" xml:space="preserve">
+    <value>Films</value>
+  </data>
+  <data name="CastCaps.Text" xml:space="preserve">
+    <value>Acteurs/regisseur</value>
+  </data>
+  <data name="CommandRecentlyAdded.Label" xml:space="preserve">
+    <value>Onlangs toegevoegd</value>
+  </data>
+  <data name="CommandSort.Label" xml:space="preserve">
+    <value>Sorteren</value>
+  </data>
+  <data name="CommandSortByYear.Text" xml:space="preserve">
+    <value>Per jaar</value>
+  </data>
+  <data name="Genre.Text" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Minutes.Text" xml:space="preserve">
+    <value>minuten</value>
+  </data>
+  <data name="ParentalRating.Text" xml:space="preserve">
+    <value>Classificatie</value>
+  </data>
+  <data name="Rating.Text" xml:space="preserve">
+    <value>Waardering</value>
+  </data>
+  <data name="Runtime.Text" xml:space="preserve">
+    <value>Runtime</value>
+  </data>
+  <data name="Studio.Text" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="SummaryCaps.Text" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Download.Text" xml:space="preserve">
+    <value>Downloaden</value>
+  </data>
+  <data name="Play.Label" xml:space="preserve">
+    <value>Afspelen</value>
+  </data>
+  <data name="Remote.Text" xml:space="preserve">
+    <value>Extern</value>
+  </data>
+  <data name="VotesFormat" xml:space="preserve">
+    <value>(|0 stemmen)</value>
+  </data>
+  <data name="InformationCaps.Text" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="CommandAllMovies.Label" xml:space="preserve">
+    <value>Alle films</value>
+  </data>
+</root>

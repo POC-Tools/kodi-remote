@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cast.Text" xml:space="preserve">
+    <value>Cast</value>
+  </data>
+  <data name="CastCaps.Text" xml:space="preserve">
+    <value>Acteurs/regisseur</value>
+  </data>
+  <data name="Genre.Text" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="NotWatched.Text" xml:space="preserve">
+    <value>Niet bekeken</value>
+  </data>
+  <data name="ParentalRating.Text" xml:space="preserve">
+    <value>Classificatie</value>
+  </data>
+  <data name="Rating.Text" xml:space="preserve">
+    <value>Waardering</value>
+  </data>
+  <data name="Seasons.Text" xml:space="preserve">
+    <value>Seizoenen</value>
+  </data>
+  <data name="SeasonsCaps.Text" xml:space="preserve">
+    <value>SEIZOENEN</value>
+  </data>
+  <data name="Studio.Text" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="SummaryCaps.Text" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="TvShowsTitle.Text" xml:space="preserve">
+    <value>Tv-programma's</value>
+  </data>
+  <data name="Year.Text" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+</root>

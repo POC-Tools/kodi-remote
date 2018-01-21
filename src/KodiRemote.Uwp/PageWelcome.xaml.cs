@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using KodiRemote.Uwp.Core;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -22,19 +23,11 @@ namespace KodiRemote.Uwp
                 Frame.Navigate(typeof(PageServers));
                 return;
             }
-
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusbar.BackgroundColor = new Windows.UI.Color() { R = 40, G = 42, B = 43 };
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Windows.UI.Colors.White;
-            }
         }
 
         private void AddButton_Click(object o, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PageSettings), "new");
+            Frame.Navigate(typeof(PageSettings), new KodiConnection());
         }
     }
 }

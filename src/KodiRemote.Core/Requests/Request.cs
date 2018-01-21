@@ -36,7 +36,7 @@ namespace KodiRemote.Core.Requests
             methodMessage.JsonRpc = "2.0";
 
             string serialization = JsonConvert.SerializeObject(methodMessage, Formatting.None);
-            string resultStr;
+            string resultStr = string.Empty;
 
             using (var handler = new HttpClientHandler())
             {
@@ -62,6 +62,10 @@ namespace KodiRemote.Core.Requests
                 catch (TaskCanceledException)
                 {
                     throw new TimeoutException(methodMessage.Method);
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
 

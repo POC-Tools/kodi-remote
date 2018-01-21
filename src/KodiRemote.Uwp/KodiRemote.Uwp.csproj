@@ -90,6 +90,9 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\TextBoxPlaceholder.xaml.cs">
+      <DependentUpon>TextBoxPlaceholder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ShorterStringConverter.cs" />
     <Compile Include="PageAddons.xaml.cs">
       <DependentUpon>PageAddons.xaml</DependentUpon>
@@ -103,9 +106,6 @@
     <Compile Include="Controls\NavMenuListView.cs" />
     <Compile Include="Controls\Rating.xaml.cs">
       <DependentUpon>Rating.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TextBoxPlaceholder.xaml.cs">
-      <DependentUpon>TextBoxPlaceholder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
@@ -150,6 +150,9 @@
     <Compile Include="PageRemote.xaml.cs">
       <DependentUpon>PageRemote.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageRemote2.xaml.cs">
+      <DependentUpon>PageRemote2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageSendText.xaml.cs">
       <DependentUpon>PageSendText.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,17 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="KodiRemote.Uwp_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\nl\welcome.resw" />
+    <PRIResource Include="Strings\nl\tvshows.resw" />
+    <PRIResource Include="Strings\nl\settings.resw" />
+    <PRIResource Include="Strings\nl\servers.resw" />
+    <PRIResource Include="Strings\nl\Resources.resw" />
+    <PRIResource Include="Strings\nl\musics.resw" />
+    <PRIResource Include="Strings\nl\movies.resw" />
+    <PRIResource Include="Strings\nl\main.resw" />
+    <PRIResource Include="Strings\nl\appSettings.resw" />
+    <PRIResource Include="Strings\nl\addons.resw" />
+    <PRIResource Include="Strings\nl\about.resw" />
     <PRIResource Include="Strings\en-US\tvshows.resw" />
     <PRIResource Include="Strings\en-US\musics.resw" />
     <PRIResource Include="Strings\en-US\movies.resw">
@@ -316,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\TextBoxPlaceholder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DeviceFamily-Desktop\PageAddons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -336,10 +354,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppSettings\DeviceFamily-Desktop\PageAppSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\LoadingIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -348,19 +362,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\TextBoxPlaceholder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DeviceFamily-Desktop\PageAbout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeviceFamily-Desktop\PageServers.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DeviceFamily-Desktop\PageSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -401,6 +407,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageRemote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageRemote2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -511,6 +521,14 @@
     <SDKReference Include="WindowsMobile, Version=10.0.16299.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\KodiRemote.Uwp.en.xlf">
+      <SubType>Designer</SubType>
+    </XliffResource>
+    <XliffResource Include="MultilingualResources\KodiRemote.Uwp.nl.xlf">
+      <SubType>Designer</SubType>
+    </XliffResource>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

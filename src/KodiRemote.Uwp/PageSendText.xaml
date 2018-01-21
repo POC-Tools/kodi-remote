@@ -37,17 +37,15 @@
                     Margin="12,24,12,0">
 
 
-            <controls:TextBoxPlaceholder x:Uid="TextToSend"
-                                         x:Name="TxtTextToSend"
+            <TextBox x:Uid="TextToSend"
+                     x:Name="TxtTextToSend"
                                          Text="{Binding TextToSend, Mode=TwoWay, ElementName=Page}"
-                                         Placeholder="Text to send" />
+                                         PlaceholderText="Text to send" />
 
             <Button x:Uid="SendTextButton"
                     Content="Submit"
                     Click="ButtonSendClick"
-                    Style="{StaticResource CleanButtonStyle}"
-                    Background="#383A3B"
-                    BorderBrush="#383A3B" />
+                    Style="{StaticResource MainButtonStyle}"/>
         </StackPanel>
     </Grid>
 

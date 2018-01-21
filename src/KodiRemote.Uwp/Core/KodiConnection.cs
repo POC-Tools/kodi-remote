@@ -12,130 +12,35 @@ using Windows.ApplicationModel.Resources;
 namespace KodiRemote.Uwp.Core
 {
     [JsonObject]
-    public class KodiConnection : INotifyPropertyChanged
+    public class KodiConnection //: INotifyPropertyChanged
     {
         public KodiConnection()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid();
 
             ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
-            Name = resourceLoader.GetString("Loading");
+            Name = resourceLoader.GetString("NewConnection");
             Status = ConnectionStatus.Pending;
         }
 
         [JsonProperty]
-        public string Id { get; set; }
-
-        #region Name
-
-        private string _name;
+        public Guid Id { get; set; }
 
         [JsonProperty]
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name == value) return;
-                _name = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region Version
-
-        private string _version;
+        public string Name { get; set; }
 
         [JsonProperty]
-        public string Version
-        {
-            get { return _version; }
-            set
-            {
-                if (_version == value) return;
-                _version = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public string Version { get; set; }
 
-        #endregion
+        public bool IsOnline { get; set; }
 
-        #region IsOnline
-
-        private bool _isOnline;
-
-        public bool IsOnline
-        {
-            get { return _isOnline; }
-            set
-            {
-                if (_isOnline == value) return;
-                _isOnline = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region Status
-
-        private ConnectionStatus _status;
-
-        public ConnectionStatus Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status == value) return;
-                _status = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region IsDefault
-
-        private bool _isDefault;
+        public ConnectionStatus Status { get; set; }
 
         [JsonProperty]
-        public bool IsDefault
-        {
-            get { return _isDefault; }
-            set
-            {
-                if (_isDefault == value) return;
-                _isDefault = value;
-                NotifyPropertyChanged();
-
-                if (value)
-                    StartTestingLoop();
-                else
-                    StopTestingLoop();
-            }
-        }
-
-        #endregion
-
-        #region Kodi
-
-        private Connection _kodi;
+        public bool IsDefault { get; set; }
 
         [JsonProperty]
-        public Connection Kodi
-        {
-            get { return _kodi; }
-            set
-            {
-                if (_kodi == value) return;
-                _kodi = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        #endregion
+        public Connection Kodi { get; set; }
 
         private bool _askStop;
 
@@ -177,13 +82,6 @@ namespace KodiRemote.Uwp.Core
 
         public async Task<bool> TestConnectionAsync()
         {
-            if (Kodi.IsMocked)
-            {
-                IsOnline = true;
-                Status = ConnectionStatus.Online;
-                Name = "Kodi server";
-                return true;
-            }
 
             Status = ConnectionStatus.Pending;
 
@@ -201,15 +99,15 @@ namespace KodiRemote.Uwp.Core
             return true;
         }
 
-        #region INotifyPropertyChanged Members
+        //#region INotifyPropertyChanged Members
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
-        #endregion
+        //#endregion
     }
 }

@@ -117,25 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonSave.Content" xml:space="preserve">
-    <value>Save</value>
+  <data name="ConnectionName.Placeholder" xml:space="preserve">
+    <value>Connection name</value>
   </data>
   <data name="ConnectivityTest.Content" xml:space="preserve">
     <value>Connectivity test</value>
   </data>
-  <data name="MACAddress.[using:KodiRemote.Uwp.Controls]TextBoxPlaceholder.Placeholder" xml:space="preserve">
+  <data name="MACAddress.Placeholder" xml:space="preserve">
     <value>MAC Address</value>
   </data>
   <data name="MACAddressOptional.Text" xml:space="preserve">
     <value>Optional. Used for Wake On Lan. Format: 00:00:00:00:00:00</value>
   </data>
-  <data name="Password.[using:KodiRemote.Uwp.Controls]TextBoxPlaceholder.Placeholder" xml:space="preserve">
+  <data name="Password.Placeholder" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="PortNumber.[using:KodiRemote.Uwp.Controls]TextBoxPlaceholder.Placeholder" xml:space="preserve">
+  <data name="PortNumber.Placeholder" xml:space="preserve">
     <value>Kodi Port Number</value>
   </data>
-  <data name="ServerAddress.[using:KodiRemote.Uwp.Controls]TextBoxPlaceholder.Placeholder" xml:space="preserve">
+  <data name="Save.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ServerAddress.Placeholder" xml:space="preserve">
     <value>Kodi Server Address</value>
   </data>
   <data name="TestBad" xml:space="preserve">
@@ -145,9 +148,9 @@
     <value>You're good to go!</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Connection settings</value>
   </data>
-  <data name="Username.[using:KodiRemote.Uwp.Controls]TextBoxPlaceholder.Placeholder" xml:space="preserve">
+  <data name="Username.Placeholder" xml:space="preserve">
     <value>Username</value>
   </data>
 </root>

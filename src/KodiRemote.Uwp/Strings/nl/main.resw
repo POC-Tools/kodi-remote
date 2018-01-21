@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Text" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Movies.Text" xml:space="preserve">
+    <value>Films</value>
+  </data>
+  <data name="Playlists.Text" xml:space="preserve">
+    <value>Afspeellijsten</value>
+  </data>
+  <data name="RemoteControl.Text" xml:space="preserve">
+    <value>Afstandsbediening</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="TvShows.Text" xml:space="preserve">
+    <value>Tv-programma's</value>
+  </data>
+</root>

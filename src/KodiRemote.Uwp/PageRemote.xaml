@@ -4,9 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      FontFamily="{StaticResource PhoneFontFamilyNormal}"
-      FontSize="{StaticResource PhoneFontSizeNormal}"
-      Foreground="{StaticResource PhoneForegroundBrush}">
+>
 
     <Page.Resources>
 
@@ -74,7 +72,6 @@
                     <TextBlock Grid.Column="1"
                                Grid.Row="0"
                                FontSize="28"
-                               Foreground="{StaticResource PhoneAccentBrush}"
                                TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="{Binding CurrentPlayingTitle}" />
@@ -91,7 +88,6 @@
                         <Slider Margin="0,0,0,-40"
                                 Maximum="{Binding Lenght}"
                                 Value="{Binding CurrentPosition, Mode=TwoWay}"
-                                Style="{StaticResource ProgressSliderStyle}"
                                 ManipulationStarted="SliderManipulationStarted"
                                 ManipulationCompleted="SliderManipulationCompleted" />
 
@@ -286,7 +282,7 @@
 
                     <Grid>
                         <Border Background="#1B1C1F"
-                                CornerRadius="260"
+                                CornerRadius="360"
                                 Width="285"
                                 Height="285"
                                 Margin="-5">
@@ -491,7 +487,6 @@
                     <TextBlock Grid.Column="1"
                                Grid.Row="0"
                                FontSize="28"
-                               Foreground="{StaticResource PhoneAccentBrush}"
                                TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="{Binding CurrentPlayingTitle}" />
@@ -516,14 +511,12 @@
                                    HorizontalAlignment="Left"
                                    FontSize="16"
                                    Margin="10,0,0,0"
-                                   Foreground="{StaticResource PhoneAccentBrush}"
                                    Text="{Binding CurrentPosition, Converter={StaticResource MilliSecondsToStringConverter}}" />
 
                         <TextBlock Grid.Row="1"
                                    HorizontalAlignment="Right"
                                    FontSize="16"
                                    Margin="0,0,10,0"
-                                   Foreground="{StaticResource PhoneAccentBrush}"
                                    Text="{Binding Lenght, Converter={StaticResource MilliSecondsToStringConverter}}" />
                     </Grid>
 
@@ -632,7 +625,6 @@
                                Grid.Column="2"
                                Grid.ColumnSpan="2"
                                FontSize="42"
-                               Foreground="{StaticResource PhoneAccentBrush}"
                                TextAlignment="Center"
                                Text="{Binding ActionSubTitle}" />
                 </Grid>

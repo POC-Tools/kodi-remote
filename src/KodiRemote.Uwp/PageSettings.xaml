@@ -4,50 +4,61 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:KodiRemote.Uwp.Controls"
+      xmlns:local="using:KodiRemote.Uwp"
       xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      Foreground="#6D6D72"
-      mc:Ignorable="d">
-
-    <Grid>
+      xmlns:conv="using:KodiRemote.Uwp.Converters"
+      mc:Ignorable="d"
+      x:Name="settingsPage">
+    
+    <Page.Resources>
+        <conv:BooleanToVisibilityConverter x:Key="visibilityConverter" />
+    </Page.Resources>
+    <!--<Canvas>
+        <ProgressRing IsActive="{x:Bind vm.IsLoading, Mode=TwoWay}" Grid.Row="2" Width="80" Height="80"/>
+    </Canvas>-->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--TileControl issue: https://github.com/Microsoft/UWPCommunityToolkit/issues/1070-->
-        <toolkit:TileControl Grid.RowSpan="2"
+        <!--<toolkit:TileControl Grid.RowSpan="2"
                              IsAnimated="False"
-                             ImageSource="ms-appx:///Assets/welcome.small.png" />
+                             ImageSource="ms-appx:///Assets/welcome.small.png" />-->
 
-        <Border Background="#383A3B"
-                BorderBrush="#22000000"
-                BorderThickness="0,0,0,2"
-                Margin="0,0,0,-2"
-                Padding="10">
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
+                BorderThickness="0"
+                Padding="4">
 
             <TextBlock x:Uid="/settings/Title"
-                       Text="Settings"
+                       Text="[Title]"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Foreground="White"
-                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
                        FontSize="28" />
         </Border>
+        <ProgressBar Grid.Row="1" IsIndeterminate="{x:Bind vm.IsLoading, Mode=TwoWay}" Margin="4" Visibility="Visible" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
 
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="2" >
+            <StackPanel Margin="20,0">
 
-            <StackPanel Margin="10,40">
+                <controls:TextBoxPlaceholder x:Uid="/settings/ConnectionName"
+                         Text="{x:Bind vm.KodiConnection.Name, Mode=OneWay}"
+                         Placeholder="[Name]" 
+                         BorderThickness="0,0,0,1" IsEnabled="False"/>
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/ServerAddress"
-                                             Text="{Binding Address, Mode=TwoWay}"
-                                             Placeholder="Server Address" />
+                         Text="{x:Bind vm.Address, Mode=TwoWay}"
+                         Placeholder="[ServerAddress]" 
+                         BorderThickness="0,0,0,1" />
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/PortNumber"
-                                             Text="{Binding Port, Mode=TwoWay}"
-                                             MaxLength="6"
-                                             Placeholder="Port Number"
-                                             Width="290"
-                                             HorizontalAlignment="Left">
+                         Text="{x:Bind vm.Port, Mode=TwoWay}"
+                         MaxLength="6"
+                         Placeholder="[Port Number]"
+                         BorderThickness="0,0,0,1">
                     <controls:TextBoxPlaceholder.InputScope>
                         <InputScope>
                             <InputScope.Names>
@@ -58,43 +69,53 @@
                 </controls:TextBoxPlaceholder>
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/Username"
-                                             Text="{Binding Login, Mode=TwoWay, ElementName=Page}"
-                                             Placeholder="Username" />
+                         Text="{x:Bind vm.Login, Mode=TwoWay}"
+                         Placeholder="[Username]" 
+                         BorderThickness="0,0,0,1"/>
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/Password"
-                                             Text="{Binding Password, Mode=TwoWay, ElementName=Page}"
-                                             Placeholder="Password" />
+                         Text="{x:Bind vm.Password, Mode=TwoWay}"
+                         Placeholder="[Password]"
+                         BorderThickness="0,0,0,1" />
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/MACAddress"
-                                             Text="{Binding MacAddress, Mode=TwoWay, ElementName=Page}"
-                                             Placeholder="MAC Address" />
+                         Text="{x:Bind vm.MacAddress, Mode=TwoWay}"
+                         Placeholder="[MAC Address]" 
+                         BorderThickness="0,0,0,1"/>
 
                 <TextBlock x:Uid="/settings/MACAddressOptional"
-                           Text="MAC Address Optional"
+                           Text="[MAC Address Optional]"
                            TextWrapping="WrapWholeWords"
-                           Margin="12,6,0,12"
-                           FontSize="16" />
-
-                <Button x:Uid="/settings/ButtonSave"
-                        Content="Save"
-                        Click="SaveButtonClick"
-                        Style="{StaticResource CleanButtonStyle}"
-                        Background="#383A3B"
-                        BorderBrush="#383A3B" />
-
-                <Button x:Uid="/settings/ConnectivityTest"
-                        Content="Connectivity test"
+                           Margin="10,0,0,40" 
+                           FontSize="11"
+                           Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Uid="/settings/ConnectivityTest"
+                        Name="testButton"
+                        HorizontalAlignment="Left"
+                        Content="[Connectivity test]"
                         Click="TestButtonClick"
-                        Style="{StaticResource CleanButtonStyle}"
-                        Background="#29343A"
-                        BorderBrush="#29343A" />
-            </StackPanel>
+                        Style="{StaticResource MainButtonStyle}"
+                        Margin="4,0,0,0"
+                        />
 
+                    <Button x:Uid="/settings/Save" Grid.Column="1"
+                            Name="saveButton"
+                            HorizontalAlignment="Right"
+                            Content="[Save]"
+                            Click="SaveButtonClick"
+                            Style="{StaticResource MainButtonStyle}"
+                            Margin="0,0,4,0"
+                        />
+
+                </Grid>
+            </StackPanel>
         </ScrollViewer>
 
-        <controls:LoadingIndicator Grid.Row="1"
-                                   IsRunning="{Binding IsLoading, ElementName=Page}"
-                                   d:IsHidden="True" />
     </Grid>
 
 </Page>

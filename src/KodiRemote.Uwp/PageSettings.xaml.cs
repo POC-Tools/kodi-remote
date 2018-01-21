@@ -1,5 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using KodiRemote.Core;
 using KodiRemote.Uwp.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
@@ -11,8 +16,98 @@ namespace KodiRemote.Uwp
 {
     public sealed partial class PageSettings : Page
     {
-        private bool _newConnection;
-        private KodiConnection _connection;
+        class SettingsViewModel : INotifyPropertyChanged
+        {
+            #region -_ Properties _-
+
+            public string ConnectionName
+            {
+                get { return KodiConnection.Name; }
+                set
+                {
+                    if (KodiConnection.Name == value) return;
+                    KodiConnection.Name = value; NotifyPropertyChanged();
+                }
+            }
+            public string GetName()
+            {
+                return KodiConnection.Name;
+            }
+            public string Address
+            {
+                get { return KodiConnection.Kodi.Address; }
+                set
+                {
+                    if (KodiConnection.Kodi.Address == value) return;
+                    KodiConnection.Kodi.Address = value;
+                    NotifyPropertyChanged();
+                }
+            }
+
+            public string Port
+            {
+                get { return KodiConnection.Kodi.Port; }
+                set
+                {
+                    if (KodiConnection.Kodi.Port == value) return;
+                    KodiConnection.Kodi.Port = value; NotifyPropertyChanged();
+                }
+            }
+
+            public string Login
+            {
+                get { return KodiConnection.Kodi.Login; }
+                set
+                {
+                    if (KodiConnection.Kodi.Login == value) return;
+                    KodiConnection.Kodi.Login = value; NotifyPropertyChanged();
+                }
+            }
+
+            public string Password
+            {
+                get { return KodiConnection.Kodi.Password; }
+                set
+                {
+                    if (KodiConnection.Kodi.Password == value) return;
+                    KodiConnection.Kodi.Password = value; NotifyPropertyChanged();
+                }
+            }
+
+            public string MacAddress
+            {
+                get { return KodiConnection.Kodi.MacAddress; }
+                set
+                {
+                    if (KodiConnection.Kodi.MacAddress == value) return;
+                    KodiConnection.Kodi.MacAddress = value; NotifyPropertyChanged();
+                }
+            }
+            bool isLoading;
+            public bool IsLoading
+            {
+                get { return isLoading; }
+                set
+                {
+                    if (isLoading == value) return;
+                    isLoading = value; NotifyPropertyChanged();
+                }
+            }
+
+            public KodiConnection KodiConnection { get; }
+            #endregion
+
+            public SettingsViewModel(KodiConnection connection)
+            {
+                KodiConnection = connection;
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            void NotifyPropertyChanged([CallerMemberName] string property = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+
+        SettingsViewModel vm;
 
         public PageSettings()
         {
@@ -20,165 +115,46 @@ namespace KodiRemote.Uwp
             NavigationCacheMode = NavigationCacheMode.Required;
         }
 
-        #region Address
-
-        public string Address
-        {
-            get { return (string)GetValue(AddressProperty); }
-            private set { SetValue(AddressProperty, value); }
-        }
-
-        public static readonly DependencyProperty AddressProperty =
-            DependencyProperty.Register(nameof(Address), typeof(string), typeof(PageSettings), new PropertyMetadata(null));
-
-        #endregion
-
-        #region Port
-
-        public string Port
-        {
-            get { return (string)GetValue(PortProperty); }
-            private set { SetValue(PortProperty, value); }
-        }
-
-        public static readonly DependencyProperty PortProperty =
-            DependencyProperty.Register(nameof(Port), typeof(string), typeof(PageSettings), new PropertyMetadata(null));
-
-        #endregion
-
-        #region Login
-
-        public string Login
-        {
-            get { return (string)GetValue(LoginProperty); }
-            private set { SetValue(LoginProperty, value); }
-        }
-
-        public static readonly DependencyProperty LoginProperty =
-            DependencyProperty.Register(nameof(Login), typeof(string), typeof(PageSettings), new PropertyMetadata(null));
-
-        #endregion
-
-        #region Password
-
-        public string Password
-        {
-            get { return (string)GetValue(PasswordProperty); }
-            private set { SetValue(PasswordProperty, value); }
-        }
-
-        public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.Register(nameof(Password), typeof(string), typeof(PageSettings), new PropertyMetadata(null));
-
-        #endregion
-
-        #region MacAddress
-
-        public string MacAddress
-        {
-            get { return (string)GetValue(MacAddressProperty); }
-            private set { SetValue(MacAddressProperty, value); }
-        }
-
-        public static readonly DependencyProperty MacAddressProperty =
-            DependencyProperty.Register(nameof(MacAddress), typeof(string), typeof(PageSettings), new PropertyMetadata(null));
-
-        #endregion
-
-        #region IsLoading
-
-        public bool IsLoading
-        {
-            get { return (bool)GetValue(IsLoadingProperty); }
-            private set { SetValue(IsLoadingProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsLoadingProperty =
-            DependencyProperty.Register(nameof(IsLoading), typeof(bool), typeof(PageSettings), new PropertyMetadata(false));
-
-        #endregion
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusbar.BackgroundColor = new Windows.UI.Color() { R = 40, G = 42, B = 43 };
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Windows.UI.Colors.White;
-            }
-
-            string parameter = e.Parameter.ToString();
-            if ("new".Equals(parameter, StringComparison.OrdinalIgnoreCase))
-            {
-                _newConnection = true;
-                _connection = new KodiConnection { Kodi = KodiRemote.Core.Connection.Default() };
-            }
-            else
-            {
-                _newConnection = false;
-                _connection = App.Context.Connections.FirstOrDefault(c => c.Id.Equals(parameter, StringComparison.OrdinalIgnoreCase));
-            }
-
-            Address = _connection.Kodi.Address;
-            Port = _connection.Kodi.Port;
-            Login = _connection.Kodi.Login;
-            Password = _connection.Kodi.Password;
-            MacAddress = _connection.Kodi.MacAddress;
-
-            DataContext = this;
-        }
-
-        private bool AreInformationValid()
-        {
-            if (string.IsNullOrWhiteSpace(Address) || string.IsNullOrWhiteSpace(Port))
-                return false;
-
-            _connection.Kodi.Address = Address;
-            _connection.Kodi.Port = Port;
-            _connection.Kodi.Login = Login;
-            _connection.Kodi.Password = Password;
-            _connection.Kodi.MacAddress = MacAddress;
-
-            return true;
+            KodiConnection newConnection = e.Parameter as KodiConnection;
+            var _connection = App.Context.Connections.FirstOrDefault(c => c.Id == newConnection?.Id) ?? new KodiConnection { Kodi = Connection.Default() };
+            DataContext = vm = new SettingsViewModel(_connection);
         }
 
         private async void TestButtonClick(object sender, RoutedEventArgs e)
         {
-            if (!AreInformationValid())
-                return;
-
-            IsLoading = true;
+            vm.IsLoading = true;
 
             try
             {
-                var result = await _connection.TestConnectionAsync();
+                var result = await vm.KodiConnection.TestConnectionAsync();
+                Bindings.Update();
 
                 var resourceLoader = ResourceLoader.GetForCurrentView();
                 string message = result ? resourceLoader.GetString("/settings/TestGood") : resourceLoader.GetString("/settings/TestBad");
                 var dialog = new MessageDialog(message, resourceLoader.GetString("/settings/ConnectivityTest.Content"));
                 await dialog.ShowAsync();
 
-                App.Context.Save();
             }
             finally
             {
-                IsLoading = false;
+                vm.IsLoading = false;
             }
         }
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-            if (!AreInformationValid())
-                return;
 
-            if (_newConnection)
-                App.Context.Connections.Add(_connection);
+            if (!App.Context.Connections.Any(c=>c.Id == vm.KodiConnection.Id))
+                App.Context.Connections.Add(vm.KodiConnection);
 
             App.Context.Save();
 
             if (Frame.CanGoBack)
                 Frame.GoBack();
         }
+
+
     }
 }
