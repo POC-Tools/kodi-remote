@@ -44,8 +44,7 @@
 
             <Button x:Uid="SendTextButton"
                     Content="Submit"
-                    Click="ButtonSendClick"
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Click="ButtonSendClick" />
         </StackPanel>
     </Grid>
 

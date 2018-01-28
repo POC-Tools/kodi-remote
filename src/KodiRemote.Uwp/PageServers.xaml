@@ -6,15 +6,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:core="using:KodiRemote.Uwp.Core"
       mc:Ignorable="d">
-
-    <Grid Margin="0,-1,0,0"
-          Background="#EFEFF4">
+    <!--Background="#EFEFF4"-->
+    <Grid Margin="0,-1,0,0" Background="{StaticResource CustomBackgroundBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Border Background="#55ACEF"
+        <!--Background="#55ACEF"-->
+        <Border Background="{StaticResource CustomServerBackgroundBrush}"
                 BorderBrush="#22000000"
                 BorderThickness="0,0,0,2"
                 Margin="0,0,0,-2"
@@ -23,8 +22,7 @@
                        Text="MEDIA CENTER REMOTE"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Foreground="White"
-                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                       Foreground="{StaticResource CustomForegroundBrush}"
                        FontSize="28" />
         </Border>
 
@@ -35,14 +33,13 @@
                 <TextBlock x:Uid="/servers/Title"
                            Text="KODI SERVERS"
                            Margin="20,0,20,10"
-                           Foreground="#6D6D72" />
-
+                            />
+                <!--Foreground="#6D6D72"-->
                 <ItemsControl ItemsSource="{Binding Context.Connections}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Command="{Binding SelectCommand, ElementName=Page}"
                                     CommandParameter="{Binding}"
-                                    Style="{StaticResource HorizontalButtonStyle}"
                                     d:DataContext="{d:DesignInstance core:KodiConnection}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -56,7 +53,7 @@
                                             <MenuFlyoutItem x:Uid="MenuEdit"
                                                             Text="Edit"
                                                             Tag="&#xE1A5;"
-                                                            Tapped="TapEdit" />
+                                                            Click="TapEdit" />
                                             <MenuFlyoutItem x:Uid="MenuRemove"
                                                             Text="Remove"
                                                             Tag="&#xE2F6;"

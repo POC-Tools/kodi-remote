@@ -12,13 +12,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllowVibrate.Text" xml:space="preserve">
+    <value>Trillen aan bij de afstandsbediening.</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Wil je afbeeldingen voor speelfilms, series of muziekalbums downloaden naar je smartphone?</value>
+  </data>
+  <data name="DownloadFanArt.Text" xml:space="preserve">
+    <value>Download Fan Art achtergronden</value>
+  </data>
   <data name="Downloads.Text" xml:space="preserve">
     <value>Downloads</value>
+  </data>
+  <data name="DownloadThumbnails.Text" xml:space="preserve">
+    <value>Download thumbnails</value>
   </data>
   <data name="SettingsTitle.Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>
   <data name="DownloadsTitle.Text" xml:space="preserve">
     <value>Downloads</value>
+  </data>
+  <data name="NothingToDownload.Text" xml:space="preserve">
+    <value>Niets om te downloaden</value>
   </data>
 </root>

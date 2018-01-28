@@ -47,13 +47,7 @@ namespace KodiRemote.Uwp
                 return;
             }
 
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusbar.BackgroundColor = new Windows.UI.Color() { R = 76, G = 155, B = 214 };
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Windows.UI.Colors.White;
-            }
+
 
             bool hasPageWelcome = Frame.BackStack.Any(je => je.SourcePageType == typeof(PageWelcome));
             if (hasPageWelcome)
@@ -62,14 +56,15 @@ namespace KodiRemote.Uwp
             }
 
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    Frame.CanGoBack ?
-                    AppViewBackButtonVisibility.Visible :
-                    AppViewBackButtonVisibility.Collapsed;
+                    Frame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
 
             Context = App.Context;
 
-            foreach (var kodiConnection in App.Context.Connections)
-                Task.Factory.StartNew(kodiConnection.TestConnectionAsync);
+            var connections = Context.Connections;
+            Parallel.ForEach(connections, async c => await c.TestConnectionAsync());
+
+            //foreach (var kodiConnection in App.Context.Connections)
+            //    Task.Run(kodiConnection.TestConnectionAsync);
         }
 
         private void TapEdit(object sender, RoutedEventArgs e)
@@ -79,7 +74,7 @@ namespace KodiRemote.Uwp
             var cnx = menuItem.DataContext as KodiConnection;
             if (cnx == null) return;
 
-            Frame.Navigate(typeof(PageSettings), cnx.Id);
+            Frame.Navigate(typeof(PageSettings), cnx.Kodi.Address);
         }
 
         private async void TapRemove(object sender, RoutedEventArgs e)
@@ -94,7 +89,7 @@ namespace KodiRemote.Uwp
             var dialog = new MessageDialog(_resourceLoader.GetString("/servers/RemoveConfirm"), _resourceLoader.GetString("ApplicationTitle"));
             dialog.Commands.Add(okCommand);
             dialog.Commands.Add(cancelCommand);
-            
+
             IUICommand command = await dialog.ShowAsync();
             if (command == cancelCommand) return;
 
@@ -113,9 +108,7 @@ namespace KodiRemote.Uwp
             var menuItem = sender as FrameworkElement;
             if (menuItem == null) return;
             var cnx = menuItem.DataContext as KodiConnection;
-            if (cnx == null
-                || cnx.Kodi.IsMocked
-                || string.IsNullOrWhiteSpace(cnx.Kodi.MacAddress))
+            if (cnx == null || string.IsNullOrWhiteSpace(cnx.Kodi.MacAddress))
                 return;
 
             try
@@ -138,7 +131,7 @@ namespace KodiRemote.Uwp
         {
             Frame.Navigate(typeof(PageAbout));
         }
-        
+
         #region SelectCommand
 
         private ICommand _selectCommand;
@@ -153,7 +146,7 @@ namespace KodiRemote.Uwp
             var cnx = o as KodiConnection;
             if (cnx == null) return;
 
-            Frame.Navigate(typeof(MainPage), cnx.Id);
+            Frame.Navigate(typeof(MainPage), cnx.Kodi.Address);
         }
 
         #endregion

@@ -89,11 +89,21 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\TextBoxPlaceholder.xaml.cs">
       <DependentUpon>TextBoxPlaceholder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToValidConverter.cs" />
     <Compile Include="Converters\ShorterStringConverter.cs" />
+    <Compile Include="NavigationPage.xaml.cs">
+      <DependentUpon>NavigationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageAddons.xaml.cs">
       <DependentUpon>PageAddons.xaml</DependentUpon>
     </Compile>
@@ -188,7 +198,7 @@
     <PRIResource Include="Strings\nl\Resources.resw" />
     <PRIResource Include="Strings\nl\musics.resw" />
     <PRIResource Include="Strings\nl\movies.resw" />
-    <PRIResource Include="Strings\nl\main.resw" />
+    <PRIResource Include="Strings\nl\Navigation.resw" />
     <PRIResource Include="Strings\nl\appSettings.resw" />
     <PRIResource Include="Strings\nl\addons.resw" />
     <PRIResource Include="Strings\nl\about.resw" />
@@ -203,7 +213,7 @@
     <PRIResource Include="Strings\en-US\appSettings.resw">
       <SubType>Designer</SubType>
     </PRIResource>
-    <PRIResource Include="Strings\en-US\main.resw">
+    <PRIResource Include="Strings\en-US\Navigation.resw">
       <SubType>Designer</SubType>
     </PRIResource>
     <PRIResource Include="Strings\en-US\servers.resw">
@@ -334,21 +344,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeviceFamily-Desktop\PageAddons.xaml">
+    <Page Include="NavigationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DeviceFamily-Desktop\PageCast.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Movies\DeviceFamily-Desktop\PageMovie.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Movies\DeviceFamily-Desktop\PageMovies.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageAddons.xaml">
       <SubType>Designer</SubType>
@@ -361,14 +359,6 @@
     <Page Include="Controls\Rating.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeviceFamily-Desktop\PageAbout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeviceFamily-Desktop\PageServers.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -518,17 +508,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="WindowsMobile, Version=10.0.16299.0">
-      <Name>Windows Mobile Extensions for the UWP</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <XliffResource Include="MultilingualResources\KodiRemote.Uwp.en.xlf">
       <SubType>Designer</SubType>
     </XliffResource>
     <XliffResource Include="MultilingualResources\KodiRemote.Uwp.nl.xlf">
       <SubType>Designer</SubType>
     </XliffResource>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.16299.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -573,6 +563,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.PriResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

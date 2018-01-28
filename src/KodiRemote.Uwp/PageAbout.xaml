@@ -47,8 +47,7 @@
                            FontFamily="Segoe WP Semibold"
                            FontSize="24" />
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="BlogButtonClick">
+                <Button Click="BlogButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -85,8 +84,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="DownloadButtonClick">
+                <Button Click="DownloadButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -120,8 +118,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="ReviewButtonClick">
+                <Button Click="ReviewButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -155,8 +152,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="ShareButtonClick">
+                <Button Click="ShareButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -190,8 +186,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="GitHubButtonClick">
+                <Button Click="GitHubButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -216,8 +211,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="FacebookButtonClick">
+                <Button Click="FacebookButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -243,8 +237,7 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource HorizontalButtonStyle}"
-                        Click="TwitterButtonClick">
+                <Button Click="TwitterButtonClick">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />

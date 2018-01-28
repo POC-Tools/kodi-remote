@@ -39,7 +39,7 @@ namespace KodiRemote.Uwp
 
         public async void ButtonSendClick(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked || string.IsNullOrWhiteSpace(TextToSend)) return;
+            if ( string.IsNullOrWhiteSpace(TextToSend)) return;
 
             await App.Context.Connection.Kodi.Input.SendTextAsync(TextToSend);
         }

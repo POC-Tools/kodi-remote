@@ -159,17 +159,6 @@ namespace KodiRemote.Uwp.Core
             if (Connections == null)
                 Connections = new ObservableCollection<KodiConnection>();
 
-            //#if DEBUG
-            //            if (!Connections.Any())
-            //            {
-            //                var cnx = new KodiConnection
-            //                {
-            //                    IsDefault = true,
-            //                    Kodi = new KodiRemote.Core.Connection("123", "80", "kodi", "")
-            //                };
-            //                Connections.Add(cnx);
-            //            }
-            //#endif
         }
 
         public void Save()

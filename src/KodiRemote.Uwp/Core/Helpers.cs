@@ -26,8 +26,8 @@ namespace KodiRemote.Uwp.Core
 
         public static async Task<string> LoadImageUrl(string image)
         {
-            if (App.Context.Connection.Kodi.IsMocked)
-                return image;
+            //if (App.Context.Connection.Kodi.IsMocked)
+            //    return image;
 
             try
             {

@@ -40,7 +40,6 @@
                   x:Name="LstMovies"
                   ItemsSource="{Binding Movies, ElementName=Page}"
                   ItemClick="LstMovies_ItemClick"
-                  Style="{StaticResource MoviesGridViewStyle}"
                   ItemTemplate="{StaticResource MovieItemTemplate}"
                   SelectionMode="None"
                   IsItemClickEnabled="True">

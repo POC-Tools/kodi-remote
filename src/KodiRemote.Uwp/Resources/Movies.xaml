@@ -26,7 +26,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="MovieItemTemplateFlat">
-        <Button Style="{StaticResource HorizontalButtonStyle}">
+        <Button >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

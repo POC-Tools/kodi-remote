@@ -13,7 +13,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cast.Text" xml:space="preserve">
-    <value>Cast</value>
+    <value>Acteurs/regisseur</value>
   </data>
   <data name="CastCaps.Text" xml:space="preserve">
     <value>Acteurs/regisseur</value>
@@ -43,7 +43,10 @@
     <value>Overzicht</value>
   </data>
   <data name="TvShowsTitle.Text" xml:space="preserve">
-    <value>Tv-programma's</value>
+    <value>Series</value>
+  </data>
+  <data name="Watched.Text" xml:space="preserve">
+    <value>Bekeken</value>
   </data>
   <data name="Year.Text" xml:space="preserve">
     <value>Jaar</value>

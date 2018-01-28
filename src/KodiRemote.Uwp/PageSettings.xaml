@@ -9,20 +9,42 @@
       xmlns:conv="using:KodiRemote.Uwp.Converters"
       mc:Ignorable="d"
       x:Name="settingsPage">
-    
+
     <Page.Resources>
         <conv:BooleanToVisibilityConverter x:Key="visibilityConverter" />
+        <conv:BoolInverter x:Key="boolInverter" />
     </Page.Resources>
-    <!--<Canvas>
-        <ProgressRing IsActive="{x:Bind vm.IsLoading, Mode=TwoWay}" Grid.Row="2" Width="80" Height="80"/>
-    </Canvas>-->
+
+
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="ValidState">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{x:Bind vm.Valid, Mode=OneWay}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="validity.Foreground" Value="Green" />
+                        <Setter Target="validity.Text" Value="&#xE8FB;"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="InValidState">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{x:Bind vm.Valid, Mode=OneWay, Converter={StaticResource boolInverter}}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="validity.Foreground" Value="Red" />
+                        <Setter Target="validity.Text" Value="&#xE947;"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <!--TileControl issue: https://github.com/Microsoft/UWPCommunityToolkit/issues/1070-->
         <!--<toolkit:TileControl Grid.RowSpan="2"
                              IsAnimated="False"
@@ -32,37 +54,40 @@
                 BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
                 BorderThickness="0"
                 Padding="4">
-
+            <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
             <TextBlock x:Uid="/settings/Title"
                        Text="[Title]"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="28" />
+                       VerticalAlignment="Center" Padding="16,0"
+                       FontSize="24" />
+            </Viewbox>
         </Border>
         <ProgressBar Grid.Row="1" IsIndeterminate="{x:Bind vm.IsLoading, Mode=TwoWay}" Margin="4" Visibility="Visible" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
 
-        <ScrollViewer Grid.Row="2" >
-            <StackPanel Margin="20,0">
+        <ScrollViewer Grid.Row="2" Name="scrollView" VerticalScrollMode="Auto" >
+            <StackPanel Margin="0,0,0,0" >
+                <Grid>
+                    <TextBlock  x:Uid="/settings/ConnectionName" x:Name="ConnectionNameTextBlock" Text="{x:Bind vm.ConnectionName, Mode=OneWay}" 
+                                Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" 
+                                Margin="8" AllowFocusWhenDisabled="True"/>
+                    <TextBlock x:Name="validity"  Text="&#xE8FB;"                              
+                               FontFamily="Segoe MDL2 Assets" FontSize="20" FontWeight="ExtraBold"
+                               HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,8" >
+                    </TextBlock>
+                </Grid>
 
-                <controls:TextBoxPlaceholder x:Uid="/settings/ConnectionName"
-                         Text="{x:Bind vm.KodiConnection.Name, Mode=OneWay}"
-                         Placeholder="[Name]" 
-                         BorderThickness="0,0,0,1" IsEnabled="False"/>
-
-                <controls:TextBoxPlaceholder x:Uid="/settings/ServerAddress"
+                <controls:TextBoxPlaceholder x:Uid="/settings/ServerAddress" x:Name="AddressTextBlock"
                          Text="{x:Bind vm.Address, Mode=TwoWay}"
-                         Placeholder="[ServerAddress]" 
-                         BorderThickness="0,0,0,1" />
+                         Placeholder="[ServerAddress]" />
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/PortNumber"
                          Text="{x:Bind vm.Port, Mode=TwoWay}"
                          MaxLength="6"
-                         Placeholder="[Port Number]"
-                         BorderThickness="0,0,0,1">
+                         Placeholder="[Port Number]" >
                     <controls:TextBoxPlaceholder.InputScope>
                         <InputScope>
                             <InputScope.Names>
-                                <InputScopeName NameValue="Digits" />
+                                <InputScopeName NameValue="Number" />
                             </InputScope.Names>
                         </InputScope>
                     </controls:TextBoxPlaceholder.InputScope>
@@ -70,49 +95,44 @@
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/Username"
                          Text="{x:Bind vm.Login, Mode=TwoWay}"
-                         Placeholder="[Username]" 
-                         BorderThickness="0,0,0,1"/>
+                         Placeholder="[Username]" />
 
                 <controls:TextBoxPlaceholder x:Uid="/settings/Password"
-                         Text="{x:Bind vm.Password, Mode=TwoWay}"
-                         Placeholder="[Password]"
-                         BorderThickness="0,0,0,1" />
+                         Text="{x:Bind vm.Password, Mode=TwoWay}" 
+                         Placeholder="[Password]" />
 
-                <controls:TextBoxPlaceholder x:Uid="/settings/MACAddress"
+                <controls:TextBoxPlaceholder x:Name="mac" x:Uid="/settings/MACAddress"
                          Text="{x:Bind vm.MacAddress, Mode=TwoWay}"
-                         Placeholder="[MAC Address]" 
-                         BorderThickness="0,0,0,1"/>
+                         Placeholder="[MAC Address]" />
 
                 <TextBlock x:Uid="/settings/MACAddressOptional"
                            Text="[MAC Address Optional]"
                            TextWrapping="WrapWholeWords"
-                           Margin="10,0,0,40" 
-                           FontSize="11"
+                           HorizontalAlignment="Right"
+                           FontSize="11" 
+                           Margin="0,-12,0,0"
                            Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Button x:Uid="/settings/ConnectivityTest"
-                        Name="testButton"
-                        HorizontalAlignment="Left"
-                        Content="[Connectivity test]"
-                        Click="TestButtonClick"
-                        Style="{StaticResource MainButtonStyle}"
-                        Margin="4,0,0,0"
-                        />
+                <CheckBox Content="Default" Margin="8,24,0,0" IsChecked="{x:Bind vm.IsDefault, Mode=TwoWay}"/>
+                <RelativePanel Margin="0,40">
+                    <Button x:Uid="/settings/ConnectivityTest" 
+                            Name="testButton"
+                            Content="[Connection test]"
+                            HorizontalAlignment="Left"
+                            Click="TestButtonClick"
+                            Style="{StaticResource MainButtonStyle}"
+                            Margin="4,0,0,0" />
 
-                    <Button x:Uid="/settings/Save" Grid.Column="1"
-                            Name="saveButton"
-                            HorizontalAlignment="Right"
+                    <Button RelativePanel.AlignRightWithPanel="True"
+                            x:Uid="/settings/Save" 
                             Content="[Save]"
+                            Name="saveButton"
                             Click="SaveButtonClick"
                             Style="{StaticResource MainButtonStyle}"
-                            Margin="0,0,4,0"
-                        />
+                            Margin="0,0,4,0" />
 
-                </Grid>
+                </RelativePanel>
+
+
             </StackPanel>
         </ScrollViewer>
 

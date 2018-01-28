@@ -13,21 +13,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.Text" xml:space="preserve">
-    <value>Info</value>
+    <value>Over</value>
+  </data>
+  <data name="Addons.Text" xml:space="preserve">
+    <value>Add-ons</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Movies.Text" xml:space="preserve">
-    <value>Films</value>
+    <value>Speelfilms</value>
+  </data>
+  <data name="Music.Text" xml:space="preserve">
+    <value>Muziek</value>
   </data>
   <data name="Playlists.Text" xml:space="preserve">
     <value>Afspeellijsten</value>
   </data>
-  <data name="RemoteControl.Text" xml:space="preserve">
+  <data name="Remote.Text" xml:space="preserve">
     <value>Afstandsbediening</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>
   <data name="TvShows.Text" xml:space="preserve">
-    <value>Tv-programma's</value>
+    <value>Series</value>
   </data>
 </root>

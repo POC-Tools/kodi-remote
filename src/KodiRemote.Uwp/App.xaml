@@ -8,25 +8,29 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Converters.xaml" />
                 <!--<ResourceDictionary Source="Resources/Colors.xaml" />-->
-                <ResourceDictionary Source="Resources/Shell.xaml" />
-                <ResourceDictionary Source="Resources/MediaPlayer.xaml" />
-                <ResourceDictionary Source="Resources/Desktop.xaml" />
+                <!--<ResourceDictionary Source="Resources/Shell.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/MediaPlayer.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Desktop.xaml" />-->
                 <ResourceDictionary Source="Resources/Main.xaml" />
-                <ResourceDictionary Source="Resources/Welcome.xaml" />
-                <ResourceDictionary Source="Resources/Remote.xaml" />
-                <ResourceDictionary Source="Resources/LongListSelector.xaml" />
-                <ResourceDictionary Source="Resources/TvShows.xaml" />
-                <ResourceDictionary Source="Resources/Movies.xaml" />
+                <!--<ResourceDictionary Source="Resources/Welcome.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Remote.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/LongListSelector.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/TvShows.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Movies.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="#383A3B" />
+                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="#343434" />
+                    <SolidColorBrush x:Key="CustomForegroundBrush" Color="White" />
+                    <SolidColorBrush x:Key="CustomServerBackgroundBrush" Color="#55ACEF" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="LightGray"/>
+                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="#EAEAEA"/>
+                    <SolidColorBrush x:Key="CustomForegroundBrush" Color="Black" />
+                    <SolidColorBrush x:Key="CustomServerBackgroundBrush" Color="#8BC3ED" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
-                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="{ThemeResource SystemAltHighColor}" />
+                    <SolidColorBrush x:Key="CustomBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

@@ -149,7 +149,6 @@
                     <Button Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="0"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtTextClick">
                         <Image Source="Assets/Remote/keyboard.png" />
                     </Button>
@@ -157,14 +156,12 @@
                     <Button Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeMute">
                         <Image Source="Assets/Remote/mute.png" />
                     </Button>
 
                     <Button Grid.Row="0"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeUp">
                         <Image Source="Assets/Remote/volumeUp.png"
                                Height="40" />
@@ -172,7 +169,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeDown">
                         <Image Source="Assets/Remote/volumeDown.png"
                                Height="40" />
@@ -182,7 +178,6 @@
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="5"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtPinToStartClick">
                         <Image Source="Assets/Remote/pin.png" />
                     </Button>
@@ -191,7 +186,6 @@
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="5"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtBackClick">
                         <Image Source="Assets/Remote/arrow-back.png"
                                Height="40" />
@@ -228,7 +222,6 @@
                                 HorizontalAlignment="Left"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtHome">
                             <Image Source="Assets/Remote/home.png"
                                    Margin="5" />
@@ -238,7 +231,6 @@
                                 HorizontalAlignment="Right"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtInfo">
                             <Image Source="Assets/Remote/info.png"
                                    Margin="5" />
@@ -255,7 +247,6 @@
                                 HorizontalAlignment="Right"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtContextMenu">
                             <Image Source="Assets/Remote/contextMenu.png"
                                    Margin="5" />
@@ -265,7 +256,6 @@
                                 HorizontalAlignment="Left"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtBack">
                             <Image Source="Assets/Remote/back.png"
                                    Margin="5" />
@@ -289,28 +279,24 @@
                             <Grid Margin="10">
                                 <Button VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtLeft">
                                     <Image Source="Assets/Remote/arrow-left.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Top"
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtUp">
                                     <Image Source="Assets/Remote/arrow-up.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtRight">
                                     <Image Source="Assets/Remote/arrow-right.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtDown">
                                     <Image Source="Assets/Remote/arrow-down.png" />
                                 </Button>
@@ -325,7 +311,6 @@
                                     Height="90"
                                     Width="90"
                                     FontSize="60"
-                                    Style="{StaticResource RemoteButtonStyle}"
                                     Padding="0,0,2,6"
                                     Click="BtSelect" />
                         </Border>
@@ -369,12 +354,10 @@
                     <Button Grid.Row="0"
                             Grid.Column="0"
                             Content="OSD"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVideoOsdClick" />
 
                     <Button Grid.Row="0"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtDisplay">
                         <Image Source="Assets/Remote/display.png"
                                Height="30" />
@@ -382,7 +365,6 @@
 
                     <Button Grid.Row="0"
                             Grid.Column="2"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtStop">
                         <Image Source="Assets/Remote/stop.png"
                                Height="30" />
@@ -390,21 +372,18 @@
 
                     <Button Grid.Row="0"
                             Grid.Column="3"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSub">
                         <Image Source="Assets/Remote/subtitles.png" />
                     </Button>
 
                     <Button Grid.Row="0"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtAudio">
                         <Image Source="Assets/Remote/ellipse.png" />
                     </Button>
 
                     <Button Grid.Row="1"
                             Grid.Column="0"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtGoToPrevious">
                         <Image Source="Assets/Remote/previous.png"
                                Height="30" />
@@ -412,7 +391,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSeekBackward">
                         <Image Source="Assets/Remote/rewind.png"
                                Height="30" />
@@ -420,14 +398,12 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="2"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtPlayPause">
                         <Image Source="Assets/Remote/play-pause.png" />
                     </Button>
 
                     <Button Grid.Row="1"
                             Grid.Column="3"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSeekForward">
                         <Image Source="Assets/Remote/forward.png"
                                Height="30" />
@@ -435,7 +411,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtGoToNext">
                         <Image Source="Assets/Remote/skip.png"
                                Height="30" />
@@ -503,7 +478,6 @@
                         <Slider Margin="0,0,0,-40"
                                 Maximum="{Binding Lenght}"
                                 Value="{Binding CurrentPosition, Mode=TwoWay}"
-                                Style="{StaticResource ProgressSliderStyle}"
                                 ManipulationStarted="SliderManipulationStarted"
                                 ManipulationCompleted="SliderManipulationCompleted" />
 
@@ -564,7 +538,6 @@
                     <Button Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="0"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtTextClick">
                         <Image Source="Assets/Remote/keyboard.png" />
                     </Button>
@@ -572,14 +545,12 @@
                     <Button Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeMute">
                         <Image Source="Assets/Remote/mute.png" />
                     </Button>
 
                     <Button Grid.Row="0"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeUp">
                         <Image Source="Assets/Remote/volumeUp.png"
                                Height="40" />
@@ -587,7 +558,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVolumeDown">
                         <Image Source="Assets/Remote/volumeDown.png"
                                Height="40" />
@@ -597,7 +567,6 @@
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="5"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtPinToStartClick">
                         <Image Source="Assets/Remote/pin.png" />
                     </Button>
@@ -606,7 +575,6 @@
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="5"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtBackClick">
                         <Image Source="Assets/Remote/arrow-back.png"
                                Height="40" />
@@ -618,7 +586,6 @@
                                FontSize="30"
                                TextAlignment="Center"
                                VerticalAlignment="Center"
-                               Foreground="{StaticResource PhoneAccentBrush}"
                                Text="{Binding ActionTitle}" />
 
                     <TextBlock Grid.Row="1"
@@ -643,7 +610,6 @@
                                 HorizontalAlignment="Left"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtHome">
                             <Image Source="Assets/Remote/home.png"
                                    Margin="5" />
@@ -653,7 +619,6 @@
                                 HorizontalAlignment="Right"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtInfo">
                             <Image Source="Assets/Remote/info.png"
                                    Margin="5" />
@@ -670,7 +635,6 @@
                                 HorizontalAlignment="Right"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtContextMenu">
                             <Image Source="Assets/Remote/contextMenu.png"
                                    Margin="5" />
@@ -680,7 +644,6 @@
                                 HorizontalAlignment="Left"
                                 Height="60"
                                 Width="60"
-                                Style="{StaticResource RemoteButtonStyle}"
                                 Click="BtBack">
                             <Image Source="Assets/Remote/back.png"
                                    Margin="5" />
@@ -704,28 +667,24 @@
                             <Grid Margin="10">
                                 <Button VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtLeft">
                                     <Image Source="Assets/Remote/arrow-left.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Top"
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtUp">
                                     <Image Source="Assets/Remote/arrow-up.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtRight">
                                     <Image Source="Assets/Remote/arrow-right.png" />
                                 </Button>
 
                                 <Button VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource RemoteButtonStyle}"
                                         Click="BtDown">
                                     <Image Source="Assets/Remote/arrow-down.png" />
                                 </Button>
@@ -740,7 +699,6 @@
                                     Height="90"
                                     Width="90"
                                     FontSize="60"
-                                    Style="{StaticResource RemoteButtonStyle}"
                                     Click="BtSelect" />
                         </Border>
                     </Grid>
@@ -784,12 +742,10 @@
                     <Button Grid.Row="0"
                             Grid.Column="0"
                             Content="OSD"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtVideoOsdClick" />
 
                     <Button Grid.Row="0"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtDisplay">
                         <Image Source="Assets/Remote/display.png"
                                Height="30" />
@@ -797,7 +753,6 @@
 
                     <Button Grid.Row="0"
                             Grid.Column="2"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtStop">
                         <Image Source="Assets/Remote/stop.png"
                                Height="30" />
@@ -805,21 +760,18 @@
 
                     <Button Grid.Row="0"
                             Grid.Column="3"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSub">
                         <Image Source="Assets/Remote/subtitles.png" />
                     </Button>
 
                     <Button Grid.Row="0"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtAudio">
                         <Image Source="Assets/Remote/ellipse.png" />
                     </Button>
 
                     <Button Grid.Row="1"
                             Grid.Column="0"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtGoToPrevious">
                         <Image Source="Assets/Remote/previous.png"
                                Height="30" />
@@ -827,7 +779,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="1"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSeekBackward">
                         <Image Source="Assets/Remote/rewind.png"
                                Height="30" />
@@ -835,14 +786,12 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="2"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtPlayPause">
                         <Image Source="Assets/Remote/play-pause.png" />
                     </Button>
 
                     <Button Grid.Row="1"
                             Grid.Column="3"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtSeekForward">
                         <Image Source="Assets/Remote/forward.png"
                                Height="30" />
@@ -850,7 +799,6 @@
 
                     <Button Grid.Row="1"
                             Grid.Column="4"
-                            Style="{StaticResource RemoteButtonStyle}"
                             Click="BtGoToNext">
                         <Image Source="Assets/Remote/skip.png"
                                Height="30" />

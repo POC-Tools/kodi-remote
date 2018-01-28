@@ -116,7 +116,7 @@ namespace KodiRemote.Uwp
             if (isPaddingAdded || !sender.IsVisible) return;
 
             // Add extra padding between window title bar and app content
-            double extraPadding = (Double)Application.Current.Resources["DesktopWindowTopPadding"];
+            double extraPadding = 12; //(Double)Application.Current.Resources["DesktopWindowTopPadding"];
             isPaddingAdded = true;
 
             Thickness margin = NavMenuList.Margin;
@@ -231,9 +231,9 @@ namespace KodiRemote.Uwp
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var connID = e.Parameter == null ? Guid.Empty : (Guid)e.Parameter;
+            var connIP = e.Parameter == null ? "" : (string)e.Parameter;
 
-            _connection = App.Context.Connections.FirstOrDefault(c => c.Id == connID);
+            _connection = App.Context.Connections.FirstOrDefault(c => c.Kodi.Address == connIP);
 
             NavMenuList.SelectedIndex = 0;
             navlist[0].IsSelected = true;

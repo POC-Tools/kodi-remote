@@ -37,7 +37,6 @@
                 <TextBlock x:Name="Text"
                            Grid.Column="1"
                            Text="{x:Bind Label}"
-                           Style="{StaticResource BodyTextBlockStyle}"
                            TextWrapping="NoWrap"
                            VerticalAlignment="Center" />
             </Grid>
@@ -51,7 +50,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource LargeWindowSnapPoint}" />
+                        <AdaptiveTrigger MinWindowWidth="1008" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="RootSplitView.DisplayMode" Value="CompactInline" />
@@ -60,7 +59,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowSnapPoint}" />
+                        <AdaptiveTrigger MinWindowWidth="641" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
@@ -69,7 +68,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource MinWindowSnapPoint}" />
+                        <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="RootSplitView.DisplayMode" Value="Overlay" />
@@ -83,7 +82,6 @@
         <ToggleButton x:Name="TogglePaneButton"
                       Canvas.ZIndex="100"
                       TabIndex="1"
-                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
                       IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
                       Unchecked="TogglePaneButton_Unchecked"
                       Checked="TogglePaneButton_Checked"
@@ -102,7 +100,6 @@
                 <!-- A custom ListView to display the items in the pane.  The automation Name is set in the ContainerContentChanging event. -->
                 <controls:NavMenuListView x:Name="NavMenuList" TabIndex="3" Margin="0,52,0,0"
                                           ContainerContentChanging="NavMenuItemContainerContentChanging"
-                                          ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}"
                                           ItemTemplate="{StaticResource NavMenuItemTemplate}"
                                           ItemInvoked="NavMenuList_ItemInvoked" />
             </SplitView.Pane>

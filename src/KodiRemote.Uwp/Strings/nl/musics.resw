@@ -25,6 +25,6 @@
     <value>MUZIEK</value>
   </data>
   <data name="Remote.Label" xml:space="preserve">
-    <value>Extern</value>
+    <value>Afstandsbediening</value>
   </data>
 </root>

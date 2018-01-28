@@ -121,18 +121,21 @@
     <value>About</value>
   </data>
   <data name="Addons.Text" xml:space="preserve">
-    <value>Addons</value>
+    <value>Add-ons</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Movies.Text" xml:space="preserve">
     <value>Movies</value>
   </data>
-  <data name="Musics.Text" xml:space="preserve">
-    <value>Musics</value>
+  <data name="Music.Text" xml:space="preserve">
+    <value>Music</value>
   </data>
   <data name="Playlists.Text" xml:space="preserve">
     <value>Playlists</value>
   </data>
-  <data name="RemoteControl.Text" xml:space="preserve">
+  <data name="Remote.Text" xml:space="preserve">
     <value>Remote control</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">

@@ -24,14 +24,23 @@
   <data name="CommandSort.Label" xml:space="preserve">
     <value>Sorteren</value>
   </data>
+  <data name="CommandSortByTitle.Text" xml:space="preserve">
+    <value>Per title</value>
+  </data>
   <data name="CommandSortByYear.Text" xml:space="preserve">
     <value>Per jaar</value>
+  </data>
+  <data name="DirectedBy.Text" xml:space="preserve">
+    <value>Gerigisseerd door</value>
   </data>
   <data name="Genre.Text" xml:space="preserve">
     <value>Genre</value>
   </data>
   <data name="Minutes.Text" xml:space="preserve">
     <value>minuten</value>
+  </data>
+  <data name="NoMovies" xml:space="preserve">
+    <value>Er zijn geen speelfilms beschikbaar in je bibliotheek.</value>
   </data>
   <data name="ParentalRating.Text" xml:space="preserve">
     <value>Classificatie</value>
@@ -48,6 +57,9 @@
   <data name="SummaryCaps.Text" xml:space="preserve">
     <value>Overzicht</value>
   </data>
+  <data name="TrailerCaps.Text" xml:space="preserve">
+    <value>TRAILER</value>
+  </data>
   <data name="Download.Text" xml:space="preserve">
     <value>Downloaden</value>
   </data>
@@ -57,6 +69,9 @@
   <data name="Remote.Text" xml:space="preserve">
     <value>Extern</value>
   </data>
+  <data name="SeeOnIMDB.Label" xml:space="preserve">
+    <value>Bekijk op IMDB</value>
+  </data>
   <data name="VotesFormat" xml:space="preserve">
     <value>(|0 stemmen)</value>
   </data>
@@ -64,6 +79,6 @@
     <value>Informatie</value>
   </data>
   <data name="CommandAllMovies.Label" xml:space="preserve">
-    <value>Alle films</value>
+    <value>Alle speelfilms</value>
   </data>
 </root>

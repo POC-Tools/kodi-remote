@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using KodiRemote.Uwp.Core;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -35,9 +36,8 @@ namespace KodiRemote.Uwp
         {
             InitializeComponent();
             Suspending += OnSuspending;
+            
         }
-
-     
 
         public static void TrackException(Exception e)
         {
@@ -53,7 +53,7 @@ namespace KodiRemote.Uwp
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-           
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -71,11 +71,9 @@ namespace KodiRemote.Uwp
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
-                
+
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    rootFrame.CanGoBack ?
-                    AppViewBackButtonVisibility.Visible :
-                    AppViewBackButtonVisibility.Collapsed;
+                    rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
 
             if (e.PrelaunchActivated == false)
@@ -86,10 +84,12 @@ namespace KodiRemote.Uwp
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     rootFrame.Navigate(typeof(PageWelcome), e.Arguments);
+                    //rootFrame.Navigate(typeof(NavigationPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
         }
 
         /// <summary>

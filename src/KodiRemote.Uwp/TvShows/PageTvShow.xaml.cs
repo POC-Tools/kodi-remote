@@ -198,44 +198,44 @@ namespace KodiRemote.Uwp.TvShows
             {
                 int tvShowId = int.Parse(id);
 
-                if (App.Context.Connection.Kodi.IsMocked)
-                {
-                    #region Mocked
-                    TvShow = new VideoDetailsTvShow
-                    {
-                        TvShowId = 1,
-                        Rating = 9,
-                        Genre = new[] { "Comedy" },
-                        Studio = new[] { "NBC" },
-                        ImdbNumber = "tt0072562",
-                        Thumbnail = "http://thetvdb.com/banners/_cache/posters/76177-4.jpg",
-                        FanArt = "http://thetvdb.com/banners/fanart/original/76177-6.jpg",
-                        Title = "Saturday Night Live",
-                        Plot =
-                                "A weekly late-night 90-minute American sketch comedy/variety show broadcast live from Studio 8H at the GE Building in New York's Rockefeller Center. The show is one of the longest-running network programs in American television history and has launched careers for many major American comedy stars of the last thirty years.",
-                        Art = new MediaArtwork { Banner = "http://thetvdb.com/banners/_cache/graphical/76177-g5.jpg" },
-                        Cast = new[]
-                                {
-                                    new VideoCast
-                                        {
-                                            Name = "Tina Fey",
-                                            Role = "Artist",
-                                            Thumbnail =
-                                                "http://ia.media-imdb.com/images/M/MV5BMTU3NzMwMDI2MF5BMl5BanBnXkFtZTcwNDk0MzcyNw@@._V1._SX214_CR0,0,214,314_.jpg"
-                                        }
-                                }
-                    };
-                    #endregion
-                }
-                else
-                {
+                //if (App.Context.Connection.Kodi.IsMocked)
+                //{
+                //    #region Mocked
+                //    TvShow = new VideoDetailsTvShow
+                //    {
+                //        TvShowId = 1,
+                //        Rating = 9,
+                //        Genre = new[] { "Comedy" },
+                //        Studio = new[] { "NBC" },
+                //        ImdbNumber = "tt0072562",
+                //        Thumbnail = "http://thetvdb.com/banners/_cache/posters/76177-4.jpg",
+                //        FanArt = "http://thetvdb.com/banners/fanart/original/76177-6.jpg",
+                //        Title = "Saturday Night Live",
+                //        Plot =
+                //                "A weekly late-night 90-minute American sketch comedy/variety show broadcast live from Studio 8H at the GE Building in New York's Rockefeller Center. The show is one of the longest-running network programs in American television history and has launched careers for many major American comedy stars of the last thirty years.",
+                //        Art = new MediaArtwork { Banner = "http://thetvdb.com/banners/_cache/graphical/76177-g5.jpg" },
+                //        Cast = new[]
+                //                {
+                //                    new VideoCast
+                //                        {
+                //                            Name = "Tina Fey",
+                //                            Role = "Artist",
+                //                            Thumbnail =
+                //                                "http://ia.media-imdb.com/images/M/MV5BMTU3NzMwMDI2MF5BMl5BanBnXkFtZTcwNDk0MzcyNw@@._V1._SX214_CR0,0,214,314_.jpg"
+                //                        }
+                //                }
+                //    };
+                //    #endregion
+                //}
+                //else
+                //{
                     var tvShow = await App.Context.Connection.Kodi.VideoLibrary.GetTvShowDetailsAsync(tvShowId);
                     TvShow = tvShow.TvShowDetails;
 
                     var seasons = await App.Context.Connection.Kodi.VideoLibrary.GetSeasonsAsync(tvShowId);
                     foreach (VideoDetailsSeason season in seasons.Seasons)
                         Seasons.Add(season);
-                }
+                //}
 
                 Studio = Helpers.Combine(TvShow.Studio);
                 Genres = Helpers.Combine(TvShow.Genre);

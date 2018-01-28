@@ -8,6 +8,7 @@ using KodiRemote.Core;
 using KodiRemote.Uwp.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -20,69 +21,89 @@ namespace KodiRemote.Uwp
         {
             #region -_ Properties _-
 
+            string name;
             public string ConnectionName
             {
-                get { return KodiConnection.Name; }
+                get
+                {
+                    return name;
+                    //if (string.IsNullOrEmpty(KodiConnection.Name))
+                    //{
+                    //    var resourceLoader = ResourceLoader.GetForCurrentView();
+                    //    string message = resourceLoader.GetString("/settings/ConnectionName.Text");
+                    //    return message;
+                    //}
+
+                    //return KodiConnection.Name;
+                }
                 set
                 {
-                    if (KodiConnection.Name == value) return;
-                    KodiConnection.Name = value; NotifyPropertyChanged();
+
+                    if (name == value) return;
+                    name = value;
+                    NotifyPropertyChanged();
                 }
+
             }
-            public string GetName()
-            {
-                return KodiConnection.Name;
-            }
+
+            string address;
             public string Address
             {
-                get { return KodiConnection.Kodi.Address; }
+                get { return address; }
                 set
                 {
-                    if (KodiConnection.Kodi.Address == value) return;
-                    KodiConnection.Kodi.Address = value;
+                    if (address == value) return;
+                    address = value;
                     NotifyPropertyChanged();
                 }
             }
 
+            string port;
             public string Port
             {
-                get { return KodiConnection.Kodi.Port; }
+                get { return port; }
                 set
                 {
-                    if (KodiConnection.Kodi.Port == value) return;
-                    KodiConnection.Kodi.Port = value; NotifyPropertyChanged();
+                    if (port == value) return;
+                    port = value; NotifyPropertyChanged();
                 }
             }
 
+            string login;
             public string Login
             {
-                get { return KodiConnection.Kodi.Login; }
+                get { return login; }
                 set
                 {
-                    if (KodiConnection.Kodi.Login == value) return;
-                    KodiConnection.Kodi.Login = value; NotifyPropertyChanged();
+                    if (login == value) return;
+                    login = value; NotifyPropertyChanged();
                 }
             }
 
+            string password;
             public string Password
             {
-                get { return KodiConnection.Kodi.Password; }
+                get { return password; }
                 set
                 {
-                    if (KodiConnection.Kodi.Password == value) return;
-                    KodiConnection.Kodi.Password = value; NotifyPropertyChanged();
+                    if (password == value) return;
+                    password = value;
+                    NotifyPropertyChanged();
                 }
             }
 
+            string macAddress;
             public string MacAddress
             {
-                get { return KodiConnection.Kodi.MacAddress; }
+                get { return macAddress; }
                 set
                 {
-                    if (KodiConnection.Kodi.MacAddress == value) return;
-                    KodiConnection.Kodi.MacAddress = value; NotifyPropertyChanged();
+                    if (macAddress == value) return;
+                    macAddress = value;
+                    NotifyPropertyChanged();
                 }
             }
+
             bool isLoading;
             public bool IsLoading
             {
@@ -90,16 +111,63 @@ namespace KodiRemote.Uwp
                 set
                 {
                     if (isLoading == value) return;
-                    isLoading = value; NotifyPropertyChanged();
+                    isLoading = value;
+                    NotifyPropertyChanged();
                 }
             }
 
-            public KodiConnection KodiConnection { get; }
+            bool valid;
+            public bool Valid
+            {
+                get { return valid; }
+                set
+                {
+                    if (valid == value) return;
+                    valid = value;
+                    NotifyPropertyChanged();
+                }
+            }
+
+            private bool isDefault;
+
+            public bool IsDefault
+            {
+                get { return isDefault; }
+                set
+                {
+                    if (isDefault == value) return;
+                    isDefault = value;
+                    foreach (var conn in App.Context.Connections)
+                    {
+                        conn.IsDefault = false;
+                    }
+                    NotifyPropertyChanged();
+                }
+            }
+
+
+
+            public KodiConnection KodiConnection
+            {
+                get
+                {
+                    return new KodiConnection(Login, Password, Address, Port, MacAddress) { IsDefault = this.IsDefault };
+                }
+            }
+
             #endregion
 
             public SettingsViewModel(KodiConnection connection)
             {
-                KodiConnection = connection;
+                var resourceLoader = ResourceLoader.GetForCurrentView();
+                string name = resourceLoader.GetString("/settings/ConnectionName.Text");
+
+                Address = connection.Kodi.Address;
+                Port = connection.Kodi.Port;
+                Login = connection.Kodi.Login;
+                Password = connection.Kodi.Password;
+                MacAddress = connection.Kodi.MacAddress;
+                IsDefault = connection.IsDefault;
             }
 
             public event PropertyChangedEventHandler PropertyChanged;
@@ -113,41 +181,45 @@ namespace KodiRemote.Uwp
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
+
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+
+        Task loadingTask = Task.CompletedTask;
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            KodiConnection newConnection = e.Parameter as KodiConnection;
-            var _connection = App.Context.Connections.FirstOrDefault(c => c.Id == newConnection?.Id) ?? new KodiConnection { Kodi = Connection.Default() };
+            string address = e.Parameter as string;
+            var _connection = App.Context.Connections.FirstOrDefault(c => c.Kodi.Address == address) ?? new KodiConnection { Kodi = Connection.Default() };
             DataContext = vm = new SettingsViewModel(_connection);
+
+            await loadingTask.ContinueWith(async t => { vm.Valid = await vm.KodiConnection.TestConnectionAsync(); }).ContinueWith(async t => { vm.ConnectionName = await vm.KodiConnection.GetName(); });
+
+
         }
 
         private async void TestButtonClick(object sender, RoutedEventArgs e)
         {
             vm.IsLoading = true;
-
             try
             {
-                var result = await vm.KodiConnection.TestConnectionAsync();
-                Bindings.Update();
-
-                var resourceLoader = ResourceLoader.GetForCurrentView();
-                string message = result ? resourceLoader.GetString("/settings/TestGood") : resourceLoader.GetString("/settings/TestBad");
-                var dialog = new MessageDialog(message, resourceLoader.GetString("/settings/ConnectivityTest.Content"));
-                await dialog.ShowAsync();
-
+                vm.Valid = await vm.KodiConnection.TestConnectionAsync();
+                vm.ConnectionName = await vm.KodiConnection.GetName();
             }
             finally
             {
                 vm.IsLoading = false;
+                Bindings.Update();
+                scrollView.ChangeView(null, 0, null, false);
             }
         }
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-
-            if (!App.Context.Connections.Any(c=>c.Id == vm.KodiConnection.Id))
+            var conn = App.Context.Connections.FirstOrDefault(c => c.Kodi.Address == vm.Address);
+            if (conn == null)
                 App.Context.Connections.Add(vm.KodiConnection);
+            else
+                conn = vm.KodiConnection;
 
             App.Context.Save();
 

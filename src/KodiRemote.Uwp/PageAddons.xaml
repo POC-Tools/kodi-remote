@@ -29,8 +29,7 @@
                        Text="Addons"
                        VerticalAlignment="Center"
                        Foreground="White"
-                       Margin="20,0,0,0"
-                       Style="{StaticResource TextExtraLargeStyle}" />
+                       Margin="20,0,0,0" />
         </Border>
 
         <toolkit:MasterDetailsView x:Name="AddonSelector"
@@ -64,11 +63,9 @@
                         <StackPanel Grid.Column="1"
                                     Margin="10,0,0,0"
                                     VerticalAlignment="Center">
-                            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"
-                                       Text="{Binding Value.Name}" />
+                            <TextBlock Text="{Binding Value.Name}" />
 
                             <TextBlock Text="{Binding Value.Description}"
-                                       Style="{ThemeResource BodyTextBlockStyle}"
                                        Opacity=".6"
                                        MaxLines="1" />
                         </StackPanel>
@@ -108,12 +105,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonDescription"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Description" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Description}" />
@@ -131,12 +126,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonDisclamer"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Disclamer" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Disclaimer}" />
@@ -154,12 +147,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonAuthor"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Author" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Author}" />
@@ -177,12 +168,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonIsBroken"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Is Broken?" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Broken}" />
@@ -200,12 +189,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonIsEnabled"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Is Enabled?" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Enabled}" />
@@ -223,12 +210,10 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Uid="/addons/AddonVersion"
                                            Grid.Column="0"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            TextWrapping="Wrap"
                                            Text="Version" />
                                 <TextBlock Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           Style="{StaticResource SmallDarkTextBoxStyle}"
                                            Foreground="#888888"
                                            TextWrapping="Wrap"
                                            Text="{Binding Value.Version}" />

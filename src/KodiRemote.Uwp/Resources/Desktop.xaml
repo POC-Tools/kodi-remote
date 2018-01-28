@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Font Families -->
-    <FontFamily x:Key="FontFamilyNormal">Segoe WP</FontFamily>
-    <FontFamily x:Key="FontFamilyLight">Segoe WP Light</FontFamily>
-    <FontFamily x:Key="FontFamilySemiLight">Segoe WP SemiLight</FontFamily>
-    <FontFamily x:Key="FontFamilySemiBold">Segoe WP Semibold</FontFamily>
-    <FontFamily x:Key="FontFamilyBold">Segoe WP Bold</FontFamily>
+    <!--<FontFamily x:Key="FontFamilyNormal">Segoe WP</FontFamily>-->
+    <!--<FontFamily x:Key="FontFamilyLight">Segoe WP Light</FontFamily>-->
+    <!--<FontFamily x:Key="FontFamilySemiLight">Segoe WP SemiLight</FontFamily>-->
+    <!--<FontFamily x:Key="FontFamilySemiBold">Segoe WP Semibold</FontFamily>-->
+    <!--<FontFamily x:Key="FontFamilyBold">Segoe WP Bold</FontFamily>-->
 
     <!--14pt-->
     <x:Double x:Key="FontSizeSmall">18.667</x:Double>
@@ -36,35 +36,20 @@
     <SolidColorBrush x:Key="ForegroundBrush"
                      Color="{StaticResource ForegroundColor}" />
     
-    <Style x:Key="TextBlockBase"
-           TargetType="TextBlock">
-        <Setter Property="FontFamily"
-                Value="{StaticResource FontFamilyNormal}" />
-        <Setter Property="FontSize"
-                Value="{StaticResource FontSizeNormal}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource ForegroundBrush}" />
-    </Style>
+    <!--<Style x:Key="TextBlockBase" TargetType="TextBlock">
+    </Style>-->
 
-    <Style x:Key="TextLargeStyle"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource FontFamilySemiLight}" />
-        <Setter Property="FontSize"
-                Value="{StaticResource FontSizeLarge}" />
-    </Style>
 
-    <Style x:Key="TextExtraLargeStyle"
+    <!--<Style x:Key="TextExtraLargeStyle"
            TargetType="TextBlock"
            BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontFamily"
                 Value="{StaticResource FontFamilySemiLight}" />
         <Setter Property="FontSize"
                 Value="{StaticResource FontSizeExtraLarge}" />
-    </Style>
+    </Style>-->
 
-    <Style x:Name="DesktopTextButtonStyle"
+    <!--<Style x:Name="DesktopTextButtonStyle"
            TargetType="Button">
         <Setter Property="Background"
                 Value="#30383A3B" />
@@ -137,9 +122,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
-    <Style x:Name="BlockButtonStyle"
+    <!--<Style x:Name="BlockButtonStyle"
            TargetType="Button">
         <Setter Property="Background"
                 Value="White" />
@@ -227,9 +212,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
-    <DataTemplate x:Key="DesktopCastItemTemplate">
+    <!--<DataTemplate x:Key="DesktopCastItemTemplate">
         <Border BorderBrush="#D9D9D9"
                 BorderThickness="1"
                 Background="White">
@@ -252,17 +237,15 @@
                     <TextBlock Text="{Binding Value.Name}"
                                Foreground="#333333"
                                FontSize="24"
-                               FontFamily="{StaticResource FontFamilyBold}"
                                TextWrapping="WrapWholeWords" />
 
                     <TextBlock Text="{Binding Value.Role}"
                                Foreground="#555555"
                                FontSize="20"
-                               FontFamily="{StaticResource FontFamilyNormal}"
                                TextWrapping="WrapWholeWords" />
                 </StackPanel>
             </Grid>
         </Border>
-    </DataTemplate>
+    </DataTemplate>-->
 
 </ResourceDictionary>

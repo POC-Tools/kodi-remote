@@ -16,8 +16,6 @@ namespace KodiRemote.Uwp.Controls
             PlaceholderVisibility = Visibility.Visible;
             Loaded += TextBoxPlaceholder_Loaded;
         }
-        
-        #region Placeholder
 
         public string Placeholder
         {
@@ -25,12 +23,7 @@ namespace KodiRemote.Uwp.Controls
             set { SetValue(PlaceholderProperty, value); }
         }
 
-        public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.Register(nameof(Placeholder),
-            typeof(string), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
-
-        #endregion
-
-        #region PlaceholderVisibility
+        public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
 
         public Visibility PlaceholderVisibility
         {
@@ -38,12 +31,9 @@ namespace KodiRemote.Uwp.Controls
             set { SetValue(PlaceholderVisibilityProperty, value); }
         }
 
-        public static readonly DependencyProperty PlaceholderVisibilityProperty = DependencyProperty.Register(nameof(PlaceholderVisibility),
-            typeof(Visibility), typeof(TextBoxPlaceholder), new PropertyMetadata(Visibility.Visible));
+        public static readonly DependencyProperty PlaceholderVisibilityProperty = DependencyProperty.Register(nameof(PlaceholderVisibility), typeof(Visibility), typeof(TextBoxPlaceholder), new PropertyMetadata(Visibility.Visible));
 
-        #endregion
 
-        #region Text
 
         public string Text
         {
@@ -51,12 +41,8 @@ namespace KodiRemote.Uwp.Controls
             set { SetValue(TextProperty, value); }
         }
 
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text),
-            typeof(string), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
 
-        #endregion
-
-        #region InputScope
 
         public InputScope InputScope
         {
@@ -64,12 +50,9 @@ namespace KodiRemote.Uwp.Controls
             set { SetValue(InputScopeProperty, value); }
         }
 
-        public static readonly DependencyProperty InputScopeProperty = DependencyProperty.Register(nameof(InputScope),
-            typeof(InputScope), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
+        public static readonly DependencyProperty InputScopeProperty = DependencyProperty.Register(nameof(InputScope), typeof(InputScope), typeof(TextBoxPlaceholder), new PropertyMetadata(null));
 
-        #endregion
 
-        #region MaxLength
 
         public int MaxLength
         {
@@ -77,10 +60,9 @@ namespace KodiRemote.Uwp.Controls
             set { SetValue(MaxLengthProperty, value); }
         }
 
-        public static readonly DependencyProperty MaxLengthProperty = DependencyProperty.Register(nameof(MaxLength),
-            typeof(int), typeof(TextBoxPlaceholder), new PropertyMetadata(250));
+        public static readonly DependencyProperty MaxLengthProperty = DependencyProperty.Register(nameof(MaxLength), typeof(int), typeof(TextBoxPlaceholder), new PropertyMetadata(250));
 
-        #endregion
+
 
         private void TextBoxPlaceholder_Loaded(object sender, RoutedEventArgs e)
         {
@@ -110,17 +92,10 @@ namespace KodiRemote.Uwp.Controls
 
         private void PlaceholderVisibilityMustChange()
         {
-            if (_hasFocus)
-                PlaceholderVisibility = Visibility.Collapsed;
-            else
-                PlaceholderVisibility = string.IsNullOrWhiteSpace(MainTextBox.Text) ? Visibility.Visible : Visibility.Collapsed;
-
-            SubText.Text = PlaceholderVisibility == Visibility.Visible ? string.Empty : Placeholder;
+            SubText.Text = MainTextBox.PlaceholderText;
+            if (string.IsNullOrEmpty(MainTextBox.Text) && !_hasFocus)
+                SubText.Text = "";
         }
 
-        public void Focus()
-        {
-            MainTextBox.Focus(FocusState.Keyboard);
-        }
     }
 }

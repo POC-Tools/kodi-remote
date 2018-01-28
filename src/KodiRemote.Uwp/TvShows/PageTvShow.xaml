@@ -26,8 +26,7 @@
             <TextBlock Text="{Binding TvShowTitle, FallbackValue=(TV Show Title)}"
                        VerticalAlignment="Center"
                        Foreground="White"
-                       Margin="20,0,0,0"
-                       Style="{StaticResource TextExtraLargeStyle}" />
+                       Margin="20,0,0,0"/>
         </Border>
 
         <ScrollViewer Grid.Row="1">
@@ -46,7 +45,6 @@
                                 <Button x:Name="ButtonServers"
                                         Command="{Binding SeasonCommand, ElementName=Page}"
                                         CommandParameter="{Binding}"
-                                        Style="{StaticResource HorizontalButtonStyle}"
                                         d:DataContext="{d:DesignInstance model:VideoDetailsSeason}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -90,12 +88,10 @@
                                         </Grid>
                                         <TextBlock Grid.Column="1"
                                                    Text="{Binding Label}"
-                                                   Style="{StaticResource SmallDarkTextBoxStyle}"
                                                    VerticalAlignment="Center"
                                                    Margin="10,0" />
 
                                         <ProgressBar Grid.Column="2"
-                                                     Style="{StaticResource CustomProgressBarStyle}"
                                                      VerticalAlignment="Center"
                                                      Minimum="0"
                                                      Maximum="{Binding Episode, FallbackValue=10}"
@@ -105,13 +101,10 @@
                                                     Margin="5,0"
                                                     Orientation="Horizontal">
                                             <TextBlock Text="{Binding WatchedEpisodes}"
-                                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                                        VerticalAlignment="Center" />
                                             <TextBlock Text="/"
-                                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                                        VerticalAlignment="Center" />
                                             <TextBlock Text="{Binding Episode}"
-                                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                                        VerticalAlignment="Center" />
                                         </StackPanel>
 
@@ -140,8 +133,7 @@
                             BorderThickness="0,1"
                             Background="White"
                             Padding="20,8">
-                        <TextBlock Style="{StaticResource SmallDarkTextBoxStyle}"
-                                   TextWrapping="Wrap"
+                        <TextBlock TextWrapping="Wrap"
                                    Text="{Binding TvShow.Plot}" />
                     </Border>
 
@@ -156,12 +148,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Uid="/movies/Studio"
                                        Grid.Column="0"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        TextWrapping="Wrap"
                                        Text="Studio" />
                             <TextBlock Grid.Column="1"
                                        HorizontalAlignment="Right"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        Foreground="#888888"
                                        TextWrapping="Wrap"
                                        Text="{Binding Studio}" />
@@ -179,12 +169,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Uid="/tvshows/ParentalRating"
                                        Grid.Column="0"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        TextWrapping="Wrap"
                                        Text="Parental Rating" />
                             <TextBlock Grid.Column="1"
                                        HorizontalAlignment="Right"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        Foreground="#888888"
                                        TextWrapping="Wrap"
                                        Text="{Binding TvShow.Mpaa}" />
@@ -202,12 +190,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Uid="/tvshows/Year"
                                        Grid.Column="0"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        TextWrapping="Wrap"
                                        Text="Year" />
                             <TextBlock Grid.Column="1"
                                        HorizontalAlignment="Right"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        Foreground="#888888"
                                        TextWrapping="Wrap"
                                        Text="{Binding TvShow.Year}" />
@@ -225,12 +211,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Uid="/tvshows/Genre"
                                        Grid.Column="0"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        TextWrapping="Wrap"
                                        Text="Genre" />
                             <TextBlock Grid.Column="1"
                                        HorizontalAlignment="Right"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        Foreground="#888888"
                                        TextWrapping="Wrap"
                                        Text="{Binding Genres}" />
@@ -251,7 +235,6 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Uid="/tvshows/Rating"
                                        Grid.Column="0"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}"
                                        VerticalAlignment="Center"
                                        Text="Rating" />
 
@@ -264,8 +247,7 @@
 
                             <TextBlock Grid.Column="3"
                                        Text="{Binding Votes}"
-                                       VerticalAlignment="Center"
-                                       Style="{StaticResource SmallDarkTextBoxStyle}" />
+                                       VerticalAlignment="Center" />
                         </Grid>
                     </Border>
                 </StackPanel>
@@ -278,8 +260,7 @@
                                Margin="20,20,0,10"
                                Foreground="#6D6D72" />
 
-                    <Button Style="{StaticResource HorizontalButtonStyle}"
-                            BorderThickness="0,1,1,1"
+                    <Button BorderThickness="0,1,1,1"
                             Click="CastButton_Click">
                         <Grid>
                             <Grid.ColumnDefinitions>

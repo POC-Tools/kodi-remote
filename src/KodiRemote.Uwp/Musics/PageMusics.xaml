@@ -9,8 +9,7 @@
     <Page.Resources>
 
         <DataTemplate x:Key="ArtistItemTemplate">
-            <Button Style="{StaticResource HorizontalButtonStyle}"
-                    Click="ArtistButton_Click"
+            <Button Click="ArtistButton_Click"
                     HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -41,8 +40,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="AlbumItemTemplate">
-            <Button Style="{StaticResource HorizontalButtonStyle}"
-                    Click="AlbumButton_Click">
+            <Button Click="AlbumButton_Click">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -73,8 +71,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MusicGenreItemTemplate">
-            <Button Style="{StaticResource HorizontalButtonStyle}"
-                    Click="GenreButton_Click">
+            <Button Click="GenreButton_Click">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -150,18 +147,14 @@
                           IsItemClickEnabled="True">
                 </ListView>
                 
-                <!--<LongListSelector ItemsSource="{Binding Artists}"
-                                  Style="{StaticResource GroupingLongListSelectorStyle}"
-                                  ItemTemplate="{StaticResource ArtistItemTemplate}" />-->
+
             </PivotItem>
 
             <PivotItem x:Uid="/musics/Albums"
                        x:Name="PivotAlbums"
                        Margin="0,0,0,0"
                        Header="Albums">
-                <!--<LongListSelector ItemsSource="{Binding Albums}"
-                                  Style="{StaticResource GroupingLongListSelectorStyle}"
-                                  ItemTemplate="{StaticResource AlbumItemTemplate}" />-->
+
             </PivotItem>
 
             <PivotItem x:Uid="/musics/Genres"

@@ -7,14 +7,6 @@ namespace KodiRemote.Core
     [JsonObject]
     public sealed class Connection
     {
-        public Connection(string address, string port, string login, string password)
-            : this()
-        {
-            Address = address;
-            Port = port;
-            Login = login;
-            Password = password;
-        }
 
         public Connection()
         {
@@ -32,6 +24,17 @@ namespace KodiRemote.Core
             Server = new Kodi(this);
         }
 
+        public Connection(string address, string port, string login, string password, string macAddress = null)
+            : this()
+        {
+            Address = address;
+            Port = port;
+            Login = login;
+            Password = password;
+            MacAddress = macAddress;
+        }
+
+
         [JsonProperty]
         public string Address { get; set; }
 
@@ -47,10 +50,7 @@ namespace KodiRemote.Core
         [JsonProperty]
         public string MacAddress { get; set; }
 
-        public bool IsMocked
-        {
-            get { return Address == "123"; }
-        }
+
 
         public Addons Addons { get; }
 
@@ -76,15 +76,10 @@ namespace KodiRemote.Core
 
         public Kodi Server { get; }
 
-        internal string BaseUrl
-        {
-            get { return string.Concat("http://", Address, ":", Port, "/jsonrpc"); }
-        }
+        internal string BaseUrl { get => string.Concat("http://", Address, ":", Port, "/jsonrpc"); }
 
-        public string GetFileUrl(string path)
-        {
-            return $"http://{Address}:{Port}/{path}";
-        }
+        public string GetFileUrl(string path) => $"http://{Address}:{Port}/{path}";
+
 
         public Uri GetFileUri(string path)
         {
@@ -92,9 +87,7 @@ namespace KodiRemote.Core
             return new Uri(url, UriKind.RelativeOrAbsolute);
         }
 
-        public static Connection Default()
-        {
-            return new Connection("", "80", "kodi", "");
-        }
+        public static Connection Default() => new Connection("", "80", "kodi", "");
+
     }
 }

@@ -18,14 +18,26 @@
   <data name="AddonDescription.Text" xml:space="preserve">
     <value>Omschrijving</value>
   </data>
+  <data name="AddonDisclamer.Text" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="AddonIsBroken.Text" xml:space="preserve">
+    <value>Is gebroken?</value>
+  </data>
   <data name="AddonIsEnabled.Text" xml:space="preserve">
     <value>Is ingeschakeld</value>
   </data>
   <data name="AddonStart.Label" xml:space="preserve">
     <value>Starten</value>
   </data>
+  <data name="AddonsTitle.Text" xml:space="preserve">
+    <value>Add-ons</value>
+  </data>
   <data name="AddonStop.Label" xml:space="preserve">
     <value>Stoppen</value>
+  </data>
+  <data name="AddonTitle.Text" xml:space="preserve">
+    <value>Add-on</value>
   </data>
   <data name="AddonVersion.Text" xml:space="preserve">
     <value>Versie:</value>

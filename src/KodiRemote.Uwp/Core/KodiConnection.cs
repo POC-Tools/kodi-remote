@@ -14,27 +14,22 @@ namespace KodiRemote.Uwp.Core
     [JsonObject]
     public class KodiConnection //: INotifyPropertyChanged
     {
-        public KodiConnection()
-        {
-            Id = Guid.NewGuid();
+        public KodiConnection() => Status = ConnectionStatus.Pending;
 
-            ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
-            Name = resourceLoader.GetString("NewConnection");
-            Status = ConnectionStatus.Pending;
+
+        public KodiConnection(string login, string password, string address, string port, string macAddress)
+        {
+            Kodi = new Connection(address, port, login, password, macAddress);
         }
 
-        [JsonProperty]
-        public Guid Id { get; set; }
+        //[JsonProperty]
+        //public Guid Id { get; set; }
 
-        [JsonProperty]
-        public string Name { get; set; }
+        //[JsonProperty]
+        //public string Name { get; set; }
 
         [JsonProperty]
         public string Version { get; set; }
-
-        public bool IsOnline { get; set; }
-
-        public ConnectionStatus Status { get; set; }
 
         [JsonProperty]
         public bool IsDefault { get; set; }
@@ -42,72 +37,40 @@ namespace KodiRemote.Uwp.Core
         [JsonProperty]
         public Connection Kodi { get; set; }
 
-        private bool _askStop;
+        public bool IsOnline { get; private set; }
 
-        private async void StartTestingLoop()
+        public ConnectionStatus Status { get; private set; }
+
+        public async Task<string> GetName()
         {
-            if (Kodi == null) return;
-
-            if (Kodi.IsMocked)
+            ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
+            string name = resourceLoader.GetString("NewConnection");
+            try
             {
-                IsOnline = true;
-                Status = ConnectionStatus.Online;
-                Name = "Kodi server";
-                Version = "Version 15";
-                return;
+                const string labelBuildVersion = "System.BuildVersion";
+                const string labelFriendlyName = "System.FriendlyName";
+                var labels = await Kodi.Server.GetInfoLabelsAsync(labelFriendlyName, labelBuildVersion);
+                name = string.IsNullOrEmpty(labels[labelFriendlyName]) ? name : labels[labelFriendlyName];
+                Version = labels[labelBuildVersion];
             }
-
-            do
-            {
-                Status = ConnectionStatus.Pending;
-                try
-                {
-                    IsOnline = await Kodi.JsonRpc.PingAsync();
-                    Status = IsOnline ? ConnectionStatus.Online : ConnectionStatus.Offline;
-
-                    await Task.Delay(4000);
-                    continue;
-                }
-                catch { }
-
-                await Task.Delay(4000);
-
-            } while (!_askStop);
+            catch { }
+            return name;
         }
 
-        private void StopTestingLoop()
-        {
-            _askStop = true;
-        }
 
         public async Task<bool> TestConnectionAsync()
         {
-
             Status = ConnectionStatus.Pending;
-
-            const string labelFriendlyName = "System.FriendlyName";
-            const string labelBuildVersion = "System.BuildVersion";
-
-            IsOnline = await Kodi.JsonRpc.PingAsync();
-            Status = IsOnline ? ConnectionStatus.Online : ConnectionStatus.Offline;
-            if (!IsOnline) return false;
-
-            var labels = await Kodi.Server.GetInfoLabelsAsync(labelFriendlyName, labelBuildVersion);
-            Name = labels[labelFriendlyName];
-            Version = labels[labelBuildVersion];
-
+            try
+            {
+                IsOnline = await Kodi.JsonRpc.PingAsync();
+                Status = IsOnline ? ConnectionStatus.Online : ConnectionStatus.Offline;
+                if (!IsOnline) return false;
+            }
+            finally { }
             return true;
         }
 
-        //#region INotifyPropertyChanged Members
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //#endregion
     }
 }

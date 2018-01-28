@@ -208,14 +208,13 @@ namespace KodiRemote.Uwp
                 CurrentPlayingTitle = string.Empty;
             }
 
-            if (!App.Context.Connection.Kodi.IsMocked)
+ 
                 _timer.Start();
         }
 
         private async Task GetVolumeAsync()
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
-
+          
             var properties = await App.Context.Connection.Kodi.Application.GetPropertiesAsync(ApplicationPropertyName.volume);
             Volume = properties.Volume;
         }
@@ -317,38 +316,33 @@ namespace KodiRemote.Uwp
         #region First Row
 
         private void BtTextClick(object sender, RoutedEventArgs e)
-        {
-            if (App.Context.Connection.Kodi.IsMocked) return;
-
+        {           
             Frame.Navigate(typeof(PageSendText));
         }
 
         private async void BtVolumeMute(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
-
+           
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Application.SetMuteAsync(true);
         }
 
         private async void BtVolumeDown(object sender, RoutedEventArgs e)
         {
-            if (!App.Context.Connection.Kodi.IsMocked)
-            {
+           
                 Helpers.Vibrate();
                 await App.Context.Connection.Kodi.Application.DecrementVolumeAsync();
-            }
+           
 
             Volume--;
         }
 
         private async void BtVolumeUp(object sender, RoutedEventArgs e)
         {
-            if (!App.Context.Connection.Kodi.IsMocked)
-            {
+           
                 Helpers.Vibrate();
                 await App.Context.Connection.Kodi.Application.IncrementVolumeAsync();
-            }
+         
 
             Volume++;
         }
@@ -381,7 +375,7 @@ namespace KodiRemote.Uwp
 
         private async void BtUp(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+            
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.UpAsync();
@@ -389,7 +383,7 @@ namespace KodiRemote.Uwp
 
         private async void BtDown(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.DownAsync();
@@ -397,7 +391,7 @@ namespace KodiRemote.Uwp
 
         private async void BtLeft(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+          
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.LeftAsync();
@@ -405,7 +399,7 @@ namespace KodiRemote.Uwp
 
         private async void BtRight(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.RightAsync();
@@ -413,7 +407,7 @@ namespace KodiRemote.Uwp
 
         private async void BtSelect(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.SelectAsync();
@@ -421,7 +415,7 @@ namespace KodiRemote.Uwp
 
         private async void BtBack(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+            
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.BackAsync();
@@ -429,7 +423,7 @@ namespace KodiRemote.Uwp
 
         private async void BtHome(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.HomeAsync();
@@ -437,7 +431,7 @@ namespace KodiRemote.Uwp
 
         private async void BtInfo(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.InfoAsync();
@@ -445,7 +439,7 @@ namespace KodiRemote.Uwp
 
         private async void BtContextMenu(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             await App.Context.Connection.Kodi.Input.ContextMenuAsync();
@@ -457,7 +451,7 @@ namespace KodiRemote.Uwp
 
         private async void BtVideoOsdClick(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -469,7 +463,7 @@ namespace KodiRemote.Uwp
 
         private async void BtDisplay(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+          
 
             Helpers.Vibrate();
             try
@@ -481,7 +475,7 @@ namespace KodiRemote.Uwp
 
         private async void BtStop(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -493,7 +487,7 @@ namespace KodiRemote.Uwp
 
         private async void BtSub(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -505,7 +499,7 @@ namespace KodiRemote.Uwp
 
         private async void BtAudio(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -519,7 +513,7 @@ namespace KodiRemote.Uwp
 
         private async void BtGoToPrevious(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+          
 
             var players = await App.Context.Connection.Kodi.Player.GetActivePlayersAsync();
             if (players.Any())
@@ -535,7 +529,7 @@ namespace KodiRemote.Uwp
 
         private async void BtSeekBackward(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -547,7 +541,7 @@ namespace KodiRemote.Uwp
 
         private async void BtPlayPause(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+            
 
             Helpers.Vibrate();
             try
@@ -559,7 +553,7 @@ namespace KodiRemote.Uwp
 
         private async void BtSeekForward(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             Helpers.Vibrate();
             try
@@ -571,7 +565,7 @@ namespace KodiRemote.Uwp
 
         private async void BtGoToNext(object sender, RoutedEventArgs e)
         {
-            if (App.Context.Connection.Kodi.IsMocked) return;
+           
 
             var players = await App.Context.Connection.Kodi.Player.GetActivePlayersAsync();
             if (players.Any())

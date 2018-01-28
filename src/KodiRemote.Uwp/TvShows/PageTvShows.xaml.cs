@@ -76,20 +76,20 @@ namespace KodiRemote.Uwp.TvShows
             IsLoading = true;
             TvShows.Clear();
 
-            if (App.Context.Connection.Kodi.IsMocked)
-            {
-                var videoDetailsTvShow = new VideoDetailsTvShow
-                {
-                    TvShowId = 1,
-                    Title = "Saturday Night Live",
-                    Art = new MediaArtwork { Banner = "http://thetvdb.com/banners/_cache/graphical/76177-g5.jpg" }
-                };
+            //if (App.Context.Connection.Kodi.IsMocked)
+            //{
+            //    var videoDetailsTvShow = new VideoDetailsTvShow
+            //    {
+            //        TvShowId = 1,
+            //        Title = "Saturday Night Live",
+            //        Art = new MediaArtwork { Banner = "http://thetvdb.com/banners/_cache/graphical/76177-g5.jpg" }
+            //    };
 
-                TvShows.Add(new ExtendedVideoDetailsTvShow(videoDetailsTvShow));
+            //    TvShows.Add(new ExtendedVideoDetailsTvShow(videoDetailsTvShow));
 
-                IsLoading = false;
-                return;
-            }
+            //    IsLoading = false;
+            //    return;
+            //}
 
             try
             {
